@@ -15,12 +15,15 @@ from fundacao.geotecnia.capacidade import (
 )
 from fundacao.geotecnia.fundacao_direta import (
     ParametrosSoloDireta,
+    ResultadoTempoAdensamento,
     ResultadoTrocaSolo,
     ResultadoVesic,
     calcular_capacidade_vesic,
     calcular_recalque_adensamento_cm,
+    calcular_tempo_adensamento,
     carregar_ensaios_yaml,
     estudo_troca_solo,
+    tensao_ponta_rocha_necessaria_mpa,
 )
 from fundacao.geotecnia.grupo_radier_estaqueado import (
     ResultadoGrupoEstacas,
@@ -46,12 +49,15 @@ __all__ = [
     "curva_capacidade_por_comprimento",
     "dimensionar_comprimento_estaca",
     "ParametrosSoloDireta",
+    "ResultadoTempoAdensamento",
     "ResultadoTrocaSolo",
     "ResultadoVesic",
     "calcular_capacidade_vesic",
     "calcular_recalque_adensamento_cm",
+    "calcular_tempo_adensamento",
     "carregar_ensaios_yaml",
     "estudo_troca_solo",
+    "tensao_ponta_rocha_necessaria_mpa",
     "ResultadoGrupoEstacas",
     "ResultadoRadierEstaqueado",
     "calcular_grupo_estacas",

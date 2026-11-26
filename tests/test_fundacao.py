@@ -254,6 +254,38 @@ class TestProjetosActiflo(unittest.TestCase):
         self.assertIn("ACTIFLO 360", md)
         self.assertIn("ACTIFLO 600", md)
 
+    def test_refinamentos_deterministicos(self) -> None:
+        from fundacao.estrutural.estaca import calcular_comprimento_elastico_estaca
+        from fundacao.estrutural.laje_fundo import verificar_flexao_laje_fundo
+        from fundacao.geotecnia.fundacao_direta import (
+            calcular_tempo_adensamento,
+            tensao_ponta_rocha_necessaria_mpa,
+        )
+
+        # Gaiola de 6 m atende até Ø60 em C40 (CAA IV - ACTIFLO 360), mas Ø70 exige 6,5 m
+        c40 = Concreto(fck_mpa=40.0, caa=ClasseAgressividade.IV)
+        e60 = calcular_comprimento_elastico_estaca(60.0, concreto=c40)
+        e70_c40 = calcular_comprimento_elastico_estaca(70.0, concreto=c40)
+        e80_c30 = calcular_comprimento_elastico_estaca(80.0)
+        self.assertTrue(e60.atende_gaiola_6m_pbge)
+        self.assertFalse(e70_c40.atende_gaiola_6m_pbge)
+        self.assertEqual(e70_c40.comprimento_armado_recomendado_m, 6.5)
+        self.assertFalse(e80_c30.atende_gaiola_6m_pbge)
+
+        # Flexão da laje de 30 cm em 360-S3 (vão 2,60 m, q=66 kPa) já passa na malha PBES 6,54 cm²/m
+        flex_360 = verificar_flexao_laje_fundo(2.60, 66.0, 145.0, as_existente_pbes_cm2_m=6.54)
+        self.assertTrue(flex_360.atende_malha_existente)
+        self.assertEqual(flex_360.delta_aco_total_kg, 0.0)
+
+        # Tempo de adensamento t90 com cv=0,0085 cm²/s
+        tempo_600 = calcular_tempo_adensamento(6.3, 21.3, cv_cm2_s=0.0085)
+        self.assertGreater(tempo_600.t90_dias, 90.0)
+        self.assertAlmostEqual(tempo_600.recalque_corrigido_sb_cm, 21.3 * 0.80, places=1)
+
+        # Tensão de ponta na rocha em SP-03 (Ø50, 55 tf, RL=56,7 tf) > 2,0 MPa
+        qp = tensao_ponta_rocha_necessaria_mpa(55.0, 56.7, 50.0, fs=2.0)
+        self.assertGreater(qp, 2.0)
+
 
 if __name__ == "__main__":
     unittest.main()

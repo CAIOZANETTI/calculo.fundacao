@@ -204,3 +204,60 @@ def carregar_ensaios_yaml(caminho: str | Path) -> Dict[str, ParametrosSoloDireta
         )
         amostras[amostra.nome] = amostra
     return amostras
+
+
+@dataclass(frozen=True)
+class ResultadoTempoAdensamento:
+    espessura_camada_mole_m: float
+    distancia_drenagem_hd_m: float
+    cv_cm2_s: float
+    t50_dias: float
+    t90_dias: float
+    fator_skempton_bjerrum_mu: float
+    recalque_1d_cm: float
+    recalque_corrigido_sb_cm: float
+
+
+def calcular_tempo_adensamento(
+    espessura_camada_mole_m: float,
+    recalque_1d_cm: float,
+    cv_cm2_s: float = 0.0085,  # valor real medido nos ensaios AI-01 / AI-02 (0,0079 a 0,0144 cm²/s)
+    dupla_drenagem: bool = True,
+    fator_skempton_bjerrum_mu: float = 0.80,
+) -> ResultadoTempoAdensamento:
+    """Calcula tempo para 50% e 90% de adensamento (Terzaghi 1D) e recalque corrigido por Skempton-Bjerrum.
+
+    Fórmulas:
+      t = (T_v · H_d²) / c_v    (T_50 = 0,197; T_90 = 0,848)
+      S_SB = μ · S_1D           (μ ≈ 0,75–0,85 para argilas lateríticas / sobreadensadas)
+    """
+    hd_m = espessura_camada_mole_m / 2.0 if dupla_drenagem else espessura_camada_mole_m
+    hd_cm = hd_m * 100.0
+    t50_s = 0.197 * (hd_cm ** 2) / cv_cm2_s
+    t90_s = 0.848 * (hd_cm ** 2) / cv_cm2_s
+    seg_dia = 86400.0
+    return ResultadoTempoAdensamento(
+        espessura_camada_mole_m=round(espessura_camada_mole_m, 2),
+        distancia_drenagem_hd_m=round(hd_m, 2),
+        cv_cm2_s=cv_cm2_s,
+        t50_dias=round(t50_s / seg_dia, 1),
+        t90_dias=round(t90_s / seg_dia, 1),
+        fator_skempton_bjerrum_mu=fator_skempton_bjerrum_mu,
+        recalque_1d_cm=round(recalque_1d_cm, 2),
+        recalque_corrigido_sb_cm=round(recalque_1d_cm * fator_skempton_bjerrum_mu, 2),
+    )
+
+
+def tensao_ponta_rocha_necessaria_mpa(
+    carga_alvo_tf: float,
+    rl_solo_ult_tf: float,
+    diametro_cm: float,
+    fs: float = 2.0,
+) -> float:
+    """Calcula a tensão última de ponta na rocha q_p,ult (MPa) que a estaca precisaria mobilizar
+    (e comprovar via PCE) para atingir carga_alvo_tf quando o atrito lateral em solo não basta.
+    """
+    rp_ult_nec_tf = max(0.0, fs * carga_alvo_tf - rl_solo_ult_tf)
+    area_m2 = math.pi * ((diametro_cm / 100.0) ** 2) / 4.0
+    rp_ult_kn = rp_ult_nec_tf * 9.80665
+    return round((rp_ult_kn / area_m2) / 1000.0, 2)
