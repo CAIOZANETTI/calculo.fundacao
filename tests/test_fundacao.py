@@ -233,6 +233,27 @@ class TestProjetosActiflo(unittest.TestCase):
         c_com = calcular_confiabilidade_lognormal("com PCE", [150.0, 160.0, 155.0], 55.0, cov_modelo=0.12)
         self.assertGreater(c_com.beta_form, c_sem.beta_form)
 
+    def test_comparativo_economico_solucoes(self) -> None:
+        from fundacao.orcamento.comparativo_solucoes import (
+            comparar_solucoes_actiflo,
+            gerar_relatorio_comparativo_markdown,
+        )
+
+        dados = comparar_solucoes_actiflo(raiz_repo=REPO_ROOT)
+        self.assertEqual(len(dados["actiflo_360"]), 6)
+        self.assertEqual(len(dados["actiflo_600"]), 6)
+        # Base original 360 tem exatamente 39 estacas e 523 m perfurados
+        s0_360 = dados["actiflo_360"][0]
+        self.assertEqual(s0_360["n_estacas"], 39)
+        self.assertAlmostEqual(s0_360["metragem_perfurada_m"], 523.0, places=0)
+        # Base original 600 tem exatamente 87 estacas e 1.111 m perfurados
+        s0_600 = dados["actiflo_600"][0]
+        self.assertEqual(s0_600["n_estacas"], 87)
+        self.assertAlmostEqual(s0_600["metragem_perfurada_m"], 1111.0, places=0)
+        md = gerar_relatorio_comparativo_markdown(dados)
+        self.assertIn("ACTIFLO 360", md)
+        self.assertIn("ACTIFLO 600", md)
+
 
 if __name__ == "__main__":
     unittest.main()
