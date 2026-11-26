@@ -2,6 +2,10 @@
 
 from fundacao.verificacoes.subpressao import ResultadoSubpressao, verificar_subpressao_tanque
 from fundacao.verificacoes.cargas_tanque import ResultadoCargasTanque, calcular_cargas_tanque
+from fundacao.verificacoes.confiabilidade import (
+    ResultadoConfiabilidade,
+    calcular_confiabilidade_lognormal,
+)
 from fundacao.verificacoes.auditoria import (
     PontoCarga,
     ConfiguracaoProjeto,
@@ -17,6 +21,8 @@ __all__ = [
     "verificar_subpressao_tanque",
     "ResultadoCargasTanque",
     "calcular_cargas_tanque",
+    "ResultadoConfiabilidade",
+    "calcular_confiabilidade_lognormal",
     "PontoCarga",
     "ConfiguracaoProjeto",
     "AuditoriaPonto",

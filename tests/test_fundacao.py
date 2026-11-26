@@ -201,6 +201,38 @@ class TestProjetosActiflo(unittest.TestCase):
         self.assertAlmostEqual(tanque.peso_vazio_total_tf, 536.0, places=0)
         self.assertLess(tanque.pct_dinamico_sobre_pbes, 3.0)
 
+    def test_estudo_exaustivo_e_novos_metodos(self) -> None:
+        from fundacao.estrutural.puncao_capitel import dimensionar_capitel_minimo
+        from fundacao.geotecnia.grupo_radier_estaqueado import calcular_radier_estaqueado_pdr
+        from fundacao.geotecnia.vibracao_cravacao import avaliar_vibracao_cravacao
+        from fundacao.verificacoes.confiabilidade import calcular_confiabilidade_lognormal
+
+        # 5 métodos SPT simultâneos em SP-01 real
+        sp01 = carregar_sondagem_yaml(REPO_ROOT / "projetos" / "sondagens" / "eta_vila_c_real" / "sp01.yaml")
+        res5 = calcular_capacidade_todos_metodos(sp01, 0.70, 11.5, cota_arrasamento_m=237.65, incluir_todos_5=True)
+        self.assertEqual(len(res5.resultados), 5)
+        self.assertGreater(res5.p_adm_media_tf, 45.0)
+
+        # Vibração de cravação a 4 m do Filtro Velho deve exceder DIN 4150-3 (5 mm/s)
+        vib = avaliar_vibracao_cravacao("Filtro Velho", distancia_m=4.0, energia_martelo_kj=45.0)
+        self.assertFalse(vib.aprovado_sem_restricao)
+        self.assertGreater(vib.ppv_estimado_mm_s, 15.0)
+
+        # Capitel mínimo para estaca Ø70 cm com 95 tf sobre laje de 30 cm deve dispensar punção
+        cap = dimensionar_capitel_minimo(nk_tf=95.0, diametro_estaca_cm=70.0, h_laje_cm=30.0)
+        self.assertTrue(cap.tem_capitel)
+        self.assertTrue(cap.dispensa_armadura_puncao)
+
+        # Radier estaqueado PDR no ACTIFLO 600 com 34 estacas Ø70 deve reduzir recalque em > 65%
+        pdr = calcular_radier_estaqueado_pdr(16.9, 23.7, 3023.0, 34, 0.70, 13.5, 4000.0, 45000.0)
+        self.assertGreater(pdr.reducao_recalque_pct, 65.0)
+        self.assertTrue(pdr.atende_recalque_els)
+
+        # Confiabilidade FORM: com PCE (COV menor), β deve aumentar
+        c_sem = calcular_confiabilidade_lognormal("sem PCE", [150.0, 160.0, 155.0], 55.0, cov_modelo=0.22)
+        c_com = calcular_confiabilidade_lognormal("com PCE", [150.0, 160.0, 155.0], 55.0, cov_modelo=0.12)
+        self.assertGreater(c_com.beta_form, c_sem.beta_form)
+
 
 if __name__ == "__main__":
     unittest.main()

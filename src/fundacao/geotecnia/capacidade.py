@@ -5,10 +5,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 from typing import Dict, List, Optional
 
+from fundacao.geotecnia.alonso import calcular_alonso
 from fundacao.geotecnia.antunes_cabral import calcular_antunes_cabral
 from fundacao.geotecnia.aoki_velloso import calcular_aoki_velloso
 from fundacao.geotecnia.decourt_quaresma import calcular_decourt_quaresma
 from fundacao.geotecnia.sondagem import Sondagem
+from fundacao.geotecnia.teixeira import calcular_teixeira
 
 
 @dataclass(frozen=True)
@@ -42,14 +44,22 @@ def calcular_capacidade_todos_metodos(
     comprimento_m: float,
     cota_arrasamento_m: float | None = None,
     fs: float = 2.0,
+    incluir_todos_5: bool = False,
 ) -> ResumoCapacidadeGeotecnica:
-    """Executa os três métodos semi-empíricos e retorna o envelope conservador e médio."""
+    """Executa os 3 métodos clássicos (ou todos os 5 métodos brasileiros) e retorna o envelope."""
     cota_arr = sondagem.cota_boca_m if cota_arrasamento_m is None else cota_arrasamento_m
     raw_results = [
         calcular_aoki_velloso(sondagem, diametro_m, comprimento_m, cota_arr, fs=fs),
         calcular_decourt_quaresma(sondagem, diametro_m, comprimento_m, cota_arr, fs=fs),
         calcular_antunes_cabral(sondagem, diametro_m, comprimento_m, cota_arr, fs=fs),
     ]
+    if incluir_todos_5:
+        raw_results.extend(
+            [
+                calcular_teixeira(sondagem, diametro_m, comprimento_m, cota_arr, fs=fs),
+                calcular_alonso(sondagem, diametro_m, comprimento_m, cota_arr, fs=fs),
+            ]
+        )
     resultados = [
         ResultadoMetodoGeotecnico(
             metodo=str(r["metodo"]),

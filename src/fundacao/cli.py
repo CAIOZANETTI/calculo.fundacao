@@ -292,7 +292,23 @@ def build_parser() -> argparse.ArgumentParser:
     p_dir.add_argument("--trocas", default="0,1.5,2.5,3.3", help="Espessuras de troca de solo (m) separadas por vírgula.")
     p_dir.set_defaults(func=_cmd_direta)
 
+    p_ex = sub.add_parser(
+        "exaustivo",
+        help="Executa o estudo exaustivo determinístico (5 métodos SPT, confiabilidade FORM, vibração, capitéis e PDR).",
+    )
+    p_ex.add_argument("--out-md", default="saidas/estudo_exaustivo_actiflo_360_600.md", help="Memorial Markdown de saída.")
+    p_ex.add_argument("--out-json", default="saidas/estudo_exaustivo_resultados.json", help="Resultados estruturados em JSON.")
+    p_ex.set_defaults(func=_cmd_exaustivo)
+
     return parser
+
+
+def _cmd_exaustivo(args: argparse.Namespace) -> int:
+    from fundacao.relatorios.estudo_exaustivo import executar_estudo_exaustivo
+
+    executar_estudo_exaustivo(raiz_repo=".", out_md=args.out_md, out_json=args.out_json)
+    print(f"Estudo exaustivo gerado em:\n  - {args.out_md}\n  - {args.out_json}")
+    return 0
 
 
 def main(argv: Optional[List[str]] = None) -> int:
