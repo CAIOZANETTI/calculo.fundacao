@@ -6,7 +6,14 @@ import argparse
 from pathlib import Path
 from typing import List, Optional
 
-from fundacao.geotecnia.capacidade import calcular_capacidade_todos_metodos, curva_capacidade_por_comprimento
+import yaml
+
+from fundacao.geotecnia.capacidade import curva_capacidade_por_comprimento
+from fundacao.geotecnia.fundacao_direta import (
+    calcular_capacidade_vesic,
+    carregar_ensaios_yaml,
+    estudo_troca_solo,
+)
 from fundacao.geotecnia.sondagem import carregar_sondagem_yaml
 from fundacao.relatorios.memorial import exportar_auditoria_csv, gerar_memorial_markdown
 from fundacao.verificacoes.auditoria import (
@@ -14,6 +21,7 @@ from fundacao.verificacoes.auditoria import (
     carregar_projeto,
     estudo_sensibilidade_carga_adm,
 )
+from fundacao.verificacoes.cargas_tanque import calcular_cargas_tanque
 from fundacao.verificacoes.subpressao import verificar_subpressao_tanque
 
 
@@ -147,8 +155,10 @@ def _cmd_geotecnia(args: argparse.Namespace) -> int:
         fs=args.fs,
     )
 
-    tag = " [PERFIL HIPOTÉTICO]" if sondagem.hipotetico else ""
-    print(f"=== CAPACIDADE GEOTÉCNICA — {sondagem.codigo}{tag} | Ø{args.diametro_cm:.0f} cm | Arrasamento {cota_arr:.3f} m ===")
+    tag = " [PERFIL HIPOTÉTICO]" if sondagem.hipotetico else " [SONDAGEM REAL]"
+    rocha_info = f" | Rocha={sondagem.prof_rocha_m:.2f} m (cota {sondagem.cota_rocha_m:.2f} m)" if sondagem.prof_rocha_m else ""
+    print(f"=== CAPACIDADE GEOTÉCNICA — {sondagem.codigo}{tag}{rocha_info} ===")
+    print(f"Ø{args.diametro_cm:.0f} cm | Arrasamento {cota_arr:.3f} m | N.A.={sondagem.nivel_agua_prof_m} m")
     print(f"{'L (m)':>6} | {'Cota Ponta':>10} | {'Aoki (tf)':>10} | {'Décourt (tf)':>12} | {'Antunes (tf)':>12} | {'Mín (tf)':>9} | {'Média (tf)':>10}")
     print("-" * 82)
     for item in curva:
@@ -160,10 +170,79 @@ def _cmd_geotecnia(args: argparse.Namespace) -> int:
     return 0
 
 
+def _cmd_tanque(args: argparse.Namespace) -> int:
+    pasta = _resolver_pasta_projeto(args.projeto)
+    config, pontos = carregar_projeto(pasta)
+    with (pasta / "config.yaml").open("r", encoding="utf-8") as fh:
+        raw = yaml.safe_load(fh)
+    est = raw["estrutura"]
+    ref = raw["referencia_pbes"]
+    vol_lastro_ench = float(ref.get("lastro_concreto_simples_m3", 0.0)) + float(ref.get("enchimento_m3", 0.0))
+
+    res = calcular_cargas_tanque(
+        nome=config.nome,
+        volume_concreto_m3=config.volume_concreto_total_pbes_m3,
+        volume_lastro_enchimento_m3=vol_lastro_ench,
+        area_molhada_interna_m2=float(est["area_molhada_interna_m2"]),
+        lamina_agua_m=float(est["lamina_agua_m"]),
+        area_planta_total_m2=config.area_planta_aprox_m2,
+        carga_total_pbes_tf=sum(p.nk_tf for p in pontos),
+    )
+
+    print(f"=== BALANÇO DE CARGAS DO TANQUE — {res.nome} ===")
+    print(f"Concreto armado + lastro/enchimento (VAZIO) : {res.peso_vazio_total_tf:7.1f} tf  (q_méd = {res.tensao_media_vazio_kpa:.1f} kPa)")
+    print(f"Volume de água (operação)                   : {res.volume_liquido_m3:7.1f} m³ -> {res.peso_agua_tf:.1f} tf")
+    print(f"Microareia + lodo                           : {res.peso_microareia_lodo_tf:7.1f} tf")
+    print(f"Equipamentos + passarelas + folga PBES      : {res.parcela_equip_passarelas_folga_tf:7.1f} tf")
+    print(f"TOTAL CARACTERÍSTICO PBES                   : {res.carga_total_pbes_tf:7.1f} tf  (q_méd = {res.tensao_media_pbes_kpa:.1f} kPa)")
+    print(f"Acréscimo dinâmico típico agitadores (~3%)  : +{res.acrescimo_dinamico_agitadores_tf:6.1f} tf (+{res.pct_dinamico_sobre_pbes:.2f}% do total)")
+    return 0
+
+
+def _cmd_direta(args: argparse.Namespace) -> int:
+    pasta = _resolver_pasta_projeto(args.projeto)
+    config, pontos = carregar_projeto(pasta)
+    with (pasta / "config.yaml").open("r", encoding="utf-8") as fh:
+        raw = yaml.safe_load(fh)
+    est = raw["estrutura"]
+    b_m = float(est["largura_b_m"])
+    l_m = float(est["comprimento_l_m"])
+    z_base = float(est.get("z_base_laje_m", 1.5))
+    z_mole = float(est.get("z_fim_argila_mole_m", 4.8))
+    q_bruta_kpa = (sum(p.nk_tf for p in pontos) / config.area_planta_aprox_m2) * 9.80665
+
+    amostras = carregar_ensaios_yaml(args.ensaios)
+    solo = amostras[args.amostra]
+    vesic = calcular_capacidade_vesic(solo, b_m=b_m, l_m=l_m, df_m=z_base, fs=3.0)
+    trocas = [float(x) for x in args.trocas.split(",")]
+    estudo = estudo_troca_solo(
+        solo=solo,
+        q_bruta_kpa=q_bruta_kpa,
+        b_m=b_m,
+        l_m=l_m,
+        z_base_laje_m=z_base,
+        z_fim_argila_mole_m=z_mole,
+        espessuras_troca_m=trocas,
+    )
+
+    print(f"=== FUNDAÇÃO DIRETA (RADIER) E TROCA DE SOLO — {config.nome} ===")
+    print(f"Amostra: {solo.nome} (c'={solo.coesao_kpa} kPa, φ'={solo.angulo_atrito_graus}°, e0={solo.e0}, σ'vm={solo.tensao_pre_adensamento_kpa} kPa, Cc={solo.cc})")
+    print(f"Radier {b_m:.1f}×{l_m:.1f} m | q_bruta = {q_bruta_kpa:.1f} kPa | Vesic q_adm(FS=3) = {vesic.q_adm_kpa:.1f} kPa")
+    print(f"\n{'Troca (m)':>9} | {'Mole Rem. (m)':>13} | {'Rec. Líq. (cm)':>14} | {'Rec. Bruto (cm)':>15} | {'ELS ≤ 3 cm':>10}")
+    print("-" * 72)
+    for r in estudo:
+        ok = "SIM" if r.atende_limite_els else "NÃO"
+        print(
+            f"{r.espessura_troca_m:>9.1f} | {r.espessura_mole_remanescente_m:>13.1f} | "
+            f"{r.recalque_total_liq_cm:>14.1f} | {r.recalque_total_bruto_cm:>15.1f} | {ok:>10}"
+        )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="fundacao",
-        description="Cálculo e auditoria de fundações profundas (Estacas Hélice Contínua e Blocos — NBR 6122 / NBR 6118).",
+        description="Cálculo e auditoria de fundações profundas e diretas (NBR 6122 / NBR 6118).",
     )
     sub = parser.add_subparsers(dest="comando", required=True)
 
@@ -197,6 +276,21 @@ def build_parser() -> argparse.ArgumentParser:
     p_geo.add_argument("--comprimentos", default="6,8,10,12,14,16", help="Comprimentos L (m) separados por vírgula.")
     p_geo.add_argument("--fs", type=float, default=2.0, help="Fator de segurança global (NBR 6122).")
     p_geo.set_defaults(func=_cmd_geotecnia)
+
+    p_tanq = sub.add_parser("tanque", help="Balanço de cargas do tanque (vazio vs. cheio estático vs. operação/agitadores).")
+    p_tanq.add_argument("projeto", help="Nome do projeto ou caminho.")
+    p_tanq.set_defaults(func=_cmd_tanque)
+
+    p_dir = sub.add_parser("direta", help="Avalia fundação direta (radier), recalque por adensamento e troca de solo.")
+    p_dir.add_argument("projeto", help="Nome do projeto ou caminho.")
+    p_dir.add_argument(
+        "--ensaios",
+        default="projetos/sondagens/eta_vila_c_real/ensaios_laboratorio.yaml",
+        help="YAML de ensaios de cisalhamento e adensamento.",
+    )
+    p_dir.add_argument("--amostra", default="AI-02", help="Nome da amostra (ex.: AI-01, AI-02).")
+    p_dir.add_argument("--trocas", default="0,1.5,2.5,3.3", help="Espessuras de troca de solo (m) separadas por vírgula.")
+    p_dir.set_defaults(func=_cmd_direta)
 
     return parser
 

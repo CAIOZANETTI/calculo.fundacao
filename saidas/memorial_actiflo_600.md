@@ -56,15 +56,13 @@
 
 ## 4. Pré-Dimensionamento Geotécnico por Cota de Arrasamento
 
-> ⚠️ **ATENÇÃO:** Calculado com perfil de sondagem **HIPOTÉTICO** (substituir pelos laudos SPT reais do `2. PBGE`).
-
 | Cota Arrasamento (m) | Compr. Recomendado $L$ (m) | Cota Ponta (m) | $P_{\text{adm,mín}}$ (tf) | $P_{\text{adm,média}}$ (tf) | Tração Adm. (tf) |
 | ---: | ---: | ---: | ---: | ---: | ---: |
-| 235.562 | 9.0 | 226.562 | 37.5 | 63.1 | 17.6 |
-| 235.812 | 9.0 | 226.812 | 36.3 | 61.8 | 16.6 |
-| 236.662 | 10.0 | 226.662 | 38.4 | 64.3 | 18.1 |
-| 237.472 | 11.0 | 226.472 | 40.5 | 66.8 | 19.6 |
-| 237.662 | 11.0 | 226.662 | 39.5 | 65.6 | 18.8 |
+| 235.562 | *Não atingiu na sondagem* | — | — | — | — |
+| 235.812 | *Não atingiu na sondagem* | — | — | — | — |
+| 236.662 | *Não atingiu na sondagem* | — | — | — | — |
+| 237.472 | *Não atingiu na sondagem* | — | — | — | — |
+| 237.662 | *Não atingiu na sondagem* | — | — | — | — |
 
 ## 5. Quantitativos dos Blocos (Calculado vs. Resumo PBES)
 

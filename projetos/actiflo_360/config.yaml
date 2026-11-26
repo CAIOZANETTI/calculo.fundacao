@@ -36,7 +36,13 @@ bloco_2_estacas:
 
 estrutura:
   dimensoes_planta_m: "8.40 x 20.40"
+  largura_b_m: 8.40
+  comprimento_l_m: 20.40
   area_planta_aprox_m2: 145.0
+  area_molhada_interna_m2: 112.0
+  lamina_agua_m: 4.85
+  z_base_laje_m: 1.50
+  z_fim_argila_mole_m: 4.80
 
 referencia_pbes:
   pranchas_forma: 3

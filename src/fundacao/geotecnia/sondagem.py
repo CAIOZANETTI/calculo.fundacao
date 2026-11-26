@@ -70,6 +70,7 @@ class Sondagem:
     cota_boca_m: float
     camadas: Tuple[CamadaSPT, ...]
     nivel_agua_prof_m: Optional[float] = None
+    prof_rocha_m: Optional[float] = None
     hipotetico: bool = False
     observacoes: str = ""
 
@@ -81,7 +82,13 @@ class Sondagem:
     def cota_nivel_agua_m(self) -> Optional[float]:
         if self.nivel_agua_prof_m is None:
             return None
-        return self.cota_boca_m - self.nivel_agua_prof_m
+        return round(self.cota_boca_m - self.nivel_agua_prof_m, 3)
+
+    @property
+    def cota_rocha_m(self) -> Optional[float]:
+        if self.prof_rocha_m is None:
+            return None
+        return round(self.cota_boca_m - self.prof_rocha_m, 3)
 
     def profundidade_por_cota(self, cota_m: float) -> float:
         """Converte cota absoluta (m) em profundidade relativa à boca da sondagem (m)."""
@@ -152,6 +159,9 @@ def carregar_sondagem_yaml(caminho: str | Path) -> Sondagem:
         camadas=tuple(camadas),
         nivel_agua_prof_m=(
             float(dados["nivel_agua_prof_m"]) if dados.get("nivel_agua_prof_m") is not None else None
+        ),
+        prof_rocha_m=(
+            float(dados["prof_rocha_m"]) if dados.get("prof_rocha_m") is not None else None
         ),
         hipotetico=bool(dados.get("hipotetico", False)),
         observacoes=str(dados.get("observacoes", "")),

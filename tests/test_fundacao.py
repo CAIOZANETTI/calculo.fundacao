@@ -149,6 +149,58 @@ class TestProjetosActiflo(unittest.TestCase):
         self.assertTrue(sub.aprovado)
         self.assertGreater(sub.fs_somente_peso, 1.1)
 
+    def test_sondagens_reais_eta_vila_c_e_fundacao_direta(self) -> None:
+        from fundacao.geotecnia.fundacao_direta import (
+            calcular_capacidade_vesic,
+            carregar_ensaios_yaml,
+            estudo_troca_solo,
+        )
+        from fundacao.verificacoes.cargas_tanque import calcular_cargas_tanque
+
+        sp01 = carregar_sondagem_yaml(REPO_ROOT / "projetos" / "sondagens" / "eta_vila_c_real" / "sp01.yaml")
+        sp08 = carregar_sondagem_yaml(REPO_ROOT / "projetos" / "sondagens" / "eta_vila_c_real" / "sp08.yaml")
+        self.assertFalse(sp01.hipotetico)
+        self.assertAlmostEqual(sp01.cota_rocha_m or 0.0, 226.18, places=2)
+        self.assertAlmostEqual(sp08.cota_rocha_m or 0.0, 223.11, places=2)
+
+        # Capacidade em SP-08 (600 L/s) deve superar SP-01 (360 L/s)
+        cap_360 = calcular_capacidade_todos_metodos(sp01, 0.40, 11.5, cota_arrasamento_m=237.65)
+        cap_600 = calcular_capacidade_todos_metodos(sp08, 0.40, 13.5, cota_arrasamento_m=237.66)
+        self.assertGreater(cap_600.p_adm_media_tf, cap_360.p_adm_media_tf)
+
+        # Ensaios reais AI-02 + fundação direta: não rompe por Vesic, mas falha em ELS sem troca
+        amostras = carregar_ensaios_yaml(
+            REPO_ROOT / "projetos" / "sondagens" / "eta_vila_c_real" / "ensaios_laboratorio.yaml"
+        )
+        ai02 = amostras["AI-02"]
+        vesic = calcular_capacidade_vesic(ai02, b_m=8.4, l_m=20.4, df_m=1.5, fs=3.0)
+        self.assertGreater(vesic.q_adm_kpa, 100.0)
+
+        estudo_360 = estudo_troca_solo(
+            solo=ai02,
+            q_bruta_kpa=86.0,
+            b_m=8.4,
+            l_m=20.4,
+            z_base_laje_m=1.5,
+            z_fim_argila_mole_m=4.8,
+            espessuras_troca_m=[0.0, 3.3],
+        )
+        self.assertFalse(estudo_360[0].atende_limite_els)
+        self.assertTrue(estudo_360[1].atende_limite_els)
+
+        # Balanço de cargas ACTIFLO 360
+        tanque = calcular_cargas_tanque(
+            nome="ACTIFLO 360",
+            volume_concreto_m3=202.2,
+            volume_lastro_enchimento_m3=13.26,
+            area_molhada_interna_m2=112.0,
+            lamina_agua_m=4.85,
+            area_planta_total_m2=145.0,
+            carga_total_pbes_tf=1270.0,
+        )
+        self.assertAlmostEqual(tanque.peso_vazio_total_tf, 536.0, places=0)
+        self.assertLess(tanque.pct_dinamico_sobre_pbes, 3.0)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -11,6 +11,15 @@ from fundacao.geotecnia.capacidade import (
     curva_capacidade_por_comprimento,
     dimensionar_comprimento_estaca,
 )
+from fundacao.geotecnia.fundacao_direta import (
+    ParametrosSoloDireta,
+    ResultadoTrocaSolo,
+    ResultadoVesic,
+    calcular_capacidade_vesic,
+    calcular_recalque_adensamento_cm,
+    carregar_ensaios_yaml,
+    estudo_troca_solo,
+)
 
 __all__ = [
     "CamadaSPT",
@@ -25,4 +34,11 @@ __all__ = [
     "calcular_capacidade_todos_metodos",
     "curva_capacidade_por_comprimento",
     "dimensionar_comprimento_estaca",
+    "ParametrosSoloDireta",
+    "ResultadoTrocaSolo",
+    "ResultadoVesic",
+    "calcular_capacidade_vesic",
+    "calcular_recalque_adensamento_cm",
+    "carregar_ensaios_yaml",
+    "estudo_troca_solo",
 ]

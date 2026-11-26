@@ -1,0 +1,56 @@
+codigo: SP-04
+fonte: 001-SAA-0017-7471-SOND-RT-0000ETAVILACLOC-001-R0.pdf (Geoazimute, 03/2022)
+cota_boca_m: 240.06
+nivel_agua_prof_m: 8.0
+prof_rocha_m: 12.5
+hipotetico: false
+observacoes: Zona ACTIFLO 360 (sudoeste)
+camadas:
+- topo_m: 0.0
+  base_m: 1.0
+  nspt: 4
+  tipo_solo: argila_siltosa
+- topo_m: 1.0
+  base_m: 2.0
+  nspt: 6
+  tipo_solo: argila_siltosa
+- topo_m: 2.0
+  base_m: 3.0
+  nspt: 6
+  tipo_solo: argila_siltosa
+- topo_m: 3.0
+  base_m: 4.0
+  nspt: 7
+  tipo_solo: argila_siltosa
+- topo_m: 4.0
+  base_m: 5.0
+  nspt: 13
+  tipo_solo: argila_siltosa
+- topo_m: 5.0
+  base_m: 6.0
+  nspt: 15
+  tipo_solo: argila_siltosa
+- topo_m: 6.0
+  base_m: 7.0
+  nspt: 13
+  tipo_solo: argila_siltosa
+- topo_m: 7.0
+  base_m: 8.0
+  nspt: 10
+  tipo_solo: argila_siltosa
+- topo_m: 8.0
+  base_m: 9.0
+  nspt: 14
+  tipo_solo: argila_siltosa
+- topo_m: 9.0
+  base_m: 10.0
+  nspt: 15
+  tipo_solo: argila_siltosa
+- topo_m: 10.0
+  base_m: 11.0
+  nspt: 16
+  tipo_solo: silte_argiloso
+- topo_m: 11.0
+  base_m: 12.0
+  nspt: 16
+  tipo_solo: silte_argiloso
