@@ -22,6 +22,13 @@ from fundacao.verificacoes.auditoria import (
     auditar_projeto,
     estudo_sensibilidade_carga_adm,
 )
+from fundacao.verificacoes.simulacao_camaras import (
+    CamaraHidraulica,
+    ResultadoSimulacaoCamaras,
+    gerar_camaras_padrao,
+    gerar_malha_estacas_2d,
+    simular_enchimento_multicamaras_mc,
+)
 
 __all__ = [
     "ResultadoSubpressao",
@@ -41,4 +48,9 @@ __all__ = [
     "carregar_projeto",
     "auditar_projeto",
     "estudo_sensibilidade_carga_adm",
+    "CamaraHidraulica",
+    "ResultadoSimulacaoCamaras",
+    "gerar_camaras_padrao",
+    "gerar_malha_estacas_2d",
+    "simular_enchimento_multicamaras_mc",
 ]

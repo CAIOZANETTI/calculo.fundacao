@@ -309,6 +309,15 @@ def build_parser() -> argparse.ArgumentParser:
     p_custo.add_argument("--out-json", default="saidas/comparativo_economico_resultados.json", help="JSON estruturado de saída.")
     p_custo.set_defaults(func=_cmd_comparar_custos)
 
+    p_mc = sub.add_parser(
+        "simular-camaras",
+        help="Simulação matricial NumPy (2^K + Monte Carlo) de enchimento multicâmaras com flexão oblíqua.",
+    )
+    p_mc.add_argument("--n-mc", type=int, default=5000, help="Número de cenários aleatórios Monte Carlo por tanque.")
+    p_mc.add_argument("--seed", type=int, default=42, help="Semente aleatória para reprodutibilidade determinística.")
+    p_mc.add_argument("--out-json", default="saidas/simulacao_monte_carlo_camaras.json", help="JSON de saída.")
+    p_mc.set_defaults(func=_cmd_simular_camaras)
+
     return parser
 
 
@@ -337,6 +346,54 @@ def _cmd_comparar_custos(args: argparse.Namespace) -> int:
     p_json.parent.mkdir(parents=True, exist_ok=True)
     p_json.write_text(json.dumps(dados, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"Comparativo econômico gerado em:\n  - {args.out_md}\n  - {args.out_json}")
+    return 0
+
+
+def _cmd_simular_camaras(args: argparse.Namespace) -> int:
+    import json
+    from dataclasses import asdict
+    from fundacao.geotecnia.grupo_radier_estaqueado import calcular_radier_estaqueado_pdr
+    from fundacao.verificacoes.simulacao_camaras import (
+        gerar_camaras_padrao,
+        gerar_malha_estacas_2d,
+        simular_enchimento_multicamaras_mc,
+    )
+
+    pdr360 = calcular_radier_estaqueado_pdr(11.4, 12.7, 1270.0, 22, 0.60, 11.5)
+    cam360 = gerar_camaras_padrao(
+        11.4, 12.7, 128.0, 3, 2,
+        ["Coagulação", "Maturação N", "Decantador N", "Injeção Areia", "Maturação S", "Decantador S"],
+    )
+    est360 = gerar_malha_estacas_2d(11.4, 12.7, 4, 6, 22)
+    r360 = simular_enchimento_multicamaras_mc(
+        "ACTIFLO 360 (360-S3)", 11.4, 12.7, 145.0, 558.5 + 66.4, cam360, est360,
+        pdr360.rigidez_radier_estaqueado_kpr_kn_m, 58.0, n_monte_carlo=args.n_mc, seed=args.seed,
+    )
+
+    pdr600 = calcular_radier_estaqueado_pdr(12.7, 28.4, 3023.0, 52, 0.50, 13.0)
+    cam600 = gerar_camaras_padrao(
+        12.7, 28.4, 325.0, 4, 2,
+        ["Coag. A", "Mat. A", "Decant. A", "Canal A", "Coag. B", "Mat. B", "Decant. B", "Canal B"],
+    )
+    est600 = gerar_malha_estacas_2d(12.7, 28.4, 4, 13, 52)
+    r600 = simular_enchimento_multicamaras_mc(
+        "ACTIFLO 600 (600-S2)", 12.7, 28.4, 365.0, 1378.5 + 6.5, cam600, est600,
+        pdr600.rigidez_radier_estaqueado_kpr_kn_m, 62.0, n_monte_carlo=args.n_mc, seed=args.seed,
+    )
+
+    p_json = Path(args.out_json)
+    p_json.parent.mkdir(parents=True, exist_ok=True)
+    p_json.write_text(
+        json.dumps({"360": asdict(r360), "600": asdict(r600)}, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    for r in (r360, r600):
+        print(
+            f"{r.unidade}: {r.n_cenarios_totais} cenários | P95={r.n_max_p95_tf} tf | "
+            f"P99={r.n_max_p99_tf} tf | MAX_ABS={r.n_max_absoluto_tf} tf | "
+            f"MIN_ABS={r.n_min_absoluto_tf} tf | Δs_max={r.delta_s_max_mm} mm (1/{r.inverso_distorcao_max})"
+        )
+    print(f"JSON exportado em: {p_json}")
     return 0
 
 

@@ -354,6 +354,37 @@ class TestProjetosActiflo(unittest.TestCase):
         self.assertGreater(comp_600.fator_amplificacao_recalque_rs, comp_360.fator_amplificacao_recalque_rs)
         self.assertGreaterEqual(comp_600.espacamento_sobre_d, 4.5)
 
+    def test_simulacao_matricial_monte_carlo_camaras(self) -> None:
+        from fundacao.geotecnia.grupo_radier_estaqueado import calcular_radier_estaqueado_pdr
+        from fundacao.verificacoes.simulacao_camaras import (
+            gerar_camaras_padrao,
+            gerar_malha_estacas_2d,
+            simular_enchimento_multicamaras_mc,
+        )
+
+        pdr360 = calcular_radier_estaqueado_pdr(11.4, 12.7, 1270.0, 22, 0.60, 11.5)
+        cam360 = gerar_camaras_padrao(11.4, 12.7, 128.0, 3, 2)
+        est360 = gerar_malha_estacas_2d(11.4, 12.7, 4, 6, 22)
+        r360 = simular_enchimento_multicamaras_mc(
+            "360-S3", 11.4, 12.7, 145.0, 558.5 + 66.4, cam360, est360,
+            pdr360.rigidez_radier_estaqueado_kpr_kn_m, 58.0, n_monte_carlo=2000, seed=42,
+        )
+        # 2^6 = 64 binárias + 2000 MC = 2064 cenários reprodutíveis
+        self.assertEqual(r360.n_cenarios_totais, 2064)
+        self.assertEqual(r360.n_estacas, 22)
+        self.assertFalse(r360.ha_tracao_em_algum_cenario)
+        self.assertTrue(r360.atende_limite_estanque_1_1000)
+        # Flexão composta oblíqua (2D) supera o caso cheio simétrico (57,7 tf)
+        self.assertGreater(r360.n_max_absoluto_tf, r360.carga_media_cheio_tf)
+        self.assertEqual(len(r360.mapa_estacas_xy_pico), 22)
+
+        # Reprodutibilidade determinística com mesma seed
+        r360_dup = simular_enchimento_multicamaras_mc(
+            "360-S3", 11.4, 12.7, 145.0, 558.5 + 66.4, cam360, est360,
+            pdr360.rigidez_radier_estaqueado_kpr_kn_m, 58.0, n_monte_carlo=2000, seed=42,
+        )
+        self.assertEqual(r360.n_max_absoluto_tf, r360_dup.n_max_absoluto_tf)
+
 
 if __name__ == "__main__":
     unittest.main()
