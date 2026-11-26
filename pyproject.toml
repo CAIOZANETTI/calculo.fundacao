@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "calculo-fundacao"
+version = "0.1.0"
+description = "Biblioteca e CLI em Python para cálculo geotécnico e estrutural de fundações profundas (estacas hélice contínua e blocos sobre estacas) segundo NBR 6122:2022 e NBR 6118:2023."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+fundacao = "fundacao.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

@@ -1,0 +1,52 @@
+nome: "ACTIFLO 600 L/s (Filtro de Areia)"
+codigo_pbes: "001-SAA-0017-8820-PBES-DE-0000ACT01FORMA-R0"
+empreendimento: "SANEPAR — SAA Foz do Iguaçu (PR) — ETA Vila C"
+
+concreto:
+  fck_mpa: 40.0
+  caa: "IV"
+  relacao_ac_max: 0.45
+  cobrimento_cm: 4.5
+  aditivo_cristalizante_min_pct: 1.0
+
+estaca:
+  tipo: "helice_continua"
+  diametro_cm: 40.0         # Inferido da geometria dos blocos (70x70 e e=120cm=3D); confirmar no 2. PBGE
+  embutimento_cm: 5.0
+  p_adm_referencia_tf: 55.0 # Padronizado com ACTIFLO 360 L/s (evidencia PC59 = 61 tf para revisão!)
+  armada_compressao: false
+
+bloco_1_estaca:
+  largura_x_cm: 70.0
+  largura_y_cm: 70.0
+  altura_h_cm: 70.0
+  pilar_a_cm: 30.0
+  pilar_b_cm: 30.0
+
+bloco_2_estacas:
+  largura_b_cm: 70.0
+  comprimento_l_cm: 190.0
+  altura_h_cm: 70.0
+  espacamento_e_cm: 120.0
+  pilar_ap_cm: 30.0         # Espessura parede/apoio na direção L
+  pilar_bp_cm: 70.0         # Parede contínua cruzando a largura b = 70 cm do bloco
+  n_barras_tirante: 12
+  bitola_tirante_mm: 16.0
+  dobra_vertical_cm: 60.0
+
+estrutura:
+  dimensoes_planta_m: "23.70 x 16.90"
+  area_planta_aprox_m2: 365.0
+
+referencia_pbes:
+  pranchas_forma: 6
+  pranchas_armadura: 15
+  total_estacas: 87
+  blocos_1_estaca: 83
+  blocos_2_estacas: 2
+  volume_blocos_m3: 30.35
+  area_forma_blocos_m2: 170.00
+  volume_concreto_total_m3: 478.10
+  area_forma_total_m2: 2540.50
+  lastro_concreto_simples_m3: 19.50
+  enchimento_m3: 23.25

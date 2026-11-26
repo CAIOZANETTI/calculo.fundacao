@@ -1,0 +1,35 @@
+# ==============================================================================
+# PERFIL DE SONDAGEM HIPOTÉTICO PARA TESTES E ANÁLISE DE SENSIBILIDADE
+# ATENÇÃO: NÃO UTILIZAR PARA PROJETO EXECUTIVO!
+# Substituir pelos laudos SPT reais do 2. PBGE (ETA Vila C - Foz do Iguaçu/PR)
+# assim que disponibilizados.
+# ==============================================================================
+codigo: "SP-EXEMPLO-01 (HIPOTÉTICO - BASALTO OESTE PR)"
+cota_boca_m: 240.000
+nivel_agua_prof_m: 6.0
+hipotetico: true
+observacoes: >
+  Perfil ilustrativo de solo residual de basalto (argila siltosa porosa ->
+  argila siltosa rija -> silte argiloso muito rijo / saprólito) apenas para
+  demonstração dos métodos Aoki-Velloso, Décourt-Quaresma e Antunes-Cabral.
+
+camadas:
+  - { topo_m: 0.0,  base_m: 1.0,  nspt: 4,  tipo_solo: argila_siltosa, descricao: "Solo superficial / aterro" }
+  - { topo_m: 1.0,  base_m: 2.0,  nspt: 5,  tipo_solo: argila_siltosa, descricao: "Argila siltosa mole a média" }
+  - { topo_m: 2.0,  base_m: 3.0,  nspt: 6,  tipo_solo: argila_siltosa, descricao: "Argila siltosa porosa" }
+  - { topo_m: 3.0,  base_m: 4.0,  nspt: 8,  tipo_solo: argila_siltosa, descricao: "Argila siltosa média" }
+  - { topo_m: 4.0,  base_m: 5.0,  nspt: 10, tipo_solo: argila_siltosa, descricao: "Argila siltosa média a rija" }
+  - { topo_m: 5.0,  base_m: 6.0,  nspt: 12, tipo_solo: argila_siltosa, descricao: "Argila siltosa rija" }
+  - { topo_m: 6.0,  base_m: 7.0,  nspt: 14, tipo_solo: argila_siltosa, descricao: "Argila siltosa rija" }
+  - { topo_m: 7.0,  base_m: 8.0,  nspt: 16, tipo_solo: argila_siltosa, descricao: "Argila siltosa rija" }
+  - { topo_m: 8.0,  base_m: 9.0,  nspt: 18, tipo_solo: silte_argiloso, descricao: "Silte argiloso rijo" }
+  - { topo_m: 9.0,  base_m: 10.0, nspt: 21, tipo_solo: silte_argiloso, descricao: "Silte argiloso muito rijo" }
+  - { topo_m: 10.0, base_m: 11.0, nspt: 24, tipo_solo: silte_argiloso, descricao: "Silte argiloso muito rijo" }
+  - { topo_m: 11.0, base_m: 12.0, nspt: 28, tipo_solo: silte_argiloso, descricao: "Silte argiloso muito rijo" }
+  - { topo_m: 12.0, base_m: 13.0, nspt: 32, tipo_solo: silte_argiloso, descricao: "Saprólito de basalto duro" }
+  - { topo_m: 13.0, base_m: 14.0, nspt: 36, tipo_solo: silte_arenoso,  descricao: "Saprólito de basalto duro" }
+  - { topo_m: 14.0, base_m: 15.0, nspt: 42, tipo_solo: silte_arenoso,  descricao: "Saprólito de basalto muito duro" }
+  - { topo_m: 15.0, base_m: 16.0, nspt: 48, tipo_solo: silte_arenoso,  descricao: "Solo de alteração de rocha" }
+  - { topo_m: 16.0, base_m: 17.0, nspt: 50, tipo_solo: silte_arenoso,  descricao: "Impenetrável à percussão (basalto alterado)" }
+  - { topo_m: 17.0, base_m: 18.0, nspt: 50, tipo_solo: silte_arenoso,  descricao: "Impenetrável à percussão" }
+  - { topo_m: 18.0, base_m: 20.0, nspt: 50, tipo_solo: silte_arenoso,  descricao: "Impenetrável à percussão" }
