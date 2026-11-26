@@ -286,6 +286,74 @@ class TestProjetosActiflo(unittest.TestCase):
         qp = tensao_ponta_rocha_necessaria_mpa(55.0, 56.7, 50.0, fs=2.0)
         self.assertGreater(qp, 2.0)
 
+    def test_enchimento_parcial_camaras_e_envoltoria_acoes(self) -> None:
+        from fundacao.geotecnia.grupo_radier_estaqueado import calcular_radier_estaqueado_pdr
+        from fundacao.verificacoes.cargas_tanque import (
+            calcular_cargas_tanque,
+            gerar_envoltoria_acoes_tanque,
+            verificar_enchimento_parcial_camaras,
+        )
+
+        # ACTIFLO 360 (360-S3: 22xØ60) e ACTIFLO 600 (600-S2: 52xØ50)
+        c360 = calcular_cargas_tanque("ACTIFLO 360", 205.0, 20.0, 128.0, 5.0, 145.0, 1270.0)
+        pdr360 = calcular_radier_estaqueado_pdr(11.4, 12.7, 1270.0, 22, 0.60, 11.5)
+        parc360 = verificar_enchimento_parcial_camaras(
+            "360-S3",
+            c360.peso_vazio_total_tf + max(0.0, c360.parcela_equip_passarelas_folga_tf),
+            c360.peso_agua_tf + c360.peso_microareia_lodo_tf,
+            12.7,
+            22,
+            5,
+            pdr360.rigidez_radier_estaqueado_kpr_kn_m,
+            recalque_direto_cheio_mm=104.8,
+        )
+        self.assertFalse(parc360.ha_tracao_lado_vazio)
+        self.assertTrue(parc360.atende_limite_tanque_estanque_1_1000)
+        self.assertLess(parc360.recalque_diferencial_mm, 10.0)
+        env360 = gerar_envoltoria_acoes_tanque(c360, 145.0, 22, parc360)
+        self.assertEqual(len(env360), 6)
+        self.assertGreater(env360[5].carga_vertical_total_tf, env360[2].carga_vertical_total_tf)
+
+        c600 = calcular_cargas_tanque("ACTIFLO 600", 510.0, 45.0, 325.0, 5.0, 365.0, 3023.0)
+        pdr600 = calcular_radier_estaqueado_pdr(12.7, 28.4, 3023.0, 52, 0.50, 13.0)
+        parc600 = verificar_enchimento_parcial_camaras(
+            "600-S2",
+            c600.peso_vazio_total_tf + max(0.0, c600.parcela_equip_passarelas_folga_tf),
+            c600.peso_agua_tf + c600.peso_microareia_lodo_tf,
+            28.4,
+            52,
+            13,
+            pdr600.rigidez_radier_estaqueado_kpr_kn_m,
+            recalque_direto_cheio_mm=170.4,
+        )
+        self.assertFalse(parc600.ha_tracao_lado_vazio)
+        self.assertTrue(parc600.atende_limite_tanque_estanque_1_1000)
+        self.assertGreater(parc600.recalque_diferencial_fundacao_direta_mm, 50.0)
+
+    def test_reducao_fs_norma_com_pce_nbr6122(self) -> None:
+        from fundacao.geotecnia.capacidade import comparar_fs_com_e_sem_pce
+        from fundacao.geotecnia.sondagem import carregar_sondagem_yaml
+
+        sp03 = carregar_sondagem_yaml(REPO_ROOT / "projetos" / "sondagens" / "eta_vila_c_real" / "sp03.yaml")
+        # Em SP-03 (furo mais raso: L_ef=9,6 m), reduzir FS 2,0 -> 1,6 aumenta P_adm em +25%
+        comp_50 = comparar_fs_com_e_sem_pce(sp03, 50.0, 9.6, 237.650, 55.0)
+        comp_60 = comparar_fs_com_e_sem_pce(sp03, 60.0, 9.6, 237.650, 58.0)
+        self.assertAlmostEqual(comp_50.ganho_capacidade_pct, 25.0, places=0)
+        # Mesmo com FS=1,6, Ø50 em SP-03 ainda fica abaixo de 55 tf em solo puro; já Ø60 atende 100% em solo!
+        self.assertFalse(comp_50.atende_em_solo_fs_16)
+        self.assertTrue(comp_60.atende_em_solo_fs_16)
+        self.assertLess(comp_60.qp_rocha_req_fs_16_mpa, comp_50.qp_rocha_req_fs_20_mpa)
+
+    def test_interferencia_elemento_isolado_vs_conjunto(self) -> None:
+        from fundacao.geotecnia.grupo_radier_estaqueado import comparar_isolada_vs_conjunto
+
+        comp_360 = comparar_isolada_vs_conjunto("360-S3", 11.4, 12.7, 1270.0, 4, 6, 22, 0.60, 11.5, 2.60)
+        comp_600 = comparar_isolada_vs_conjunto("600-S2", 12.7, 28.4, 3023.0, 4, 13, 52, 0.50, 13.0, 2.65)
+        self.assertGreater(comp_360.recalque_conjunto_pdr_mm, comp_360.recalque_estaca_isolada_mm)
+        self.assertGreater(comp_360.fator_amplificacao_recalque_rs, 2.0)
+        self.assertGreater(comp_600.fator_amplificacao_recalque_rs, comp_360.fator_amplificacao_recalque_rs)
+        self.assertGreaterEqual(comp_600.espacamento_sobre_d, 4.5)
+
 
 if __name__ == "__main__":
     unittest.main()

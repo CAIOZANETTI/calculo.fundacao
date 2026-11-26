@@ -7,9 +7,11 @@ from fundacao.geotecnia.antunes_cabral import calcular_antunes_cabral
 from fundacao.geotecnia.teixeira import calcular_teixeira
 from fundacao.geotecnia.alonso import calcular_alonso
 from fundacao.geotecnia.capacidade import (
+    ComparativoFSPCE,
     ResultadoMetodoGeotecnico,
     ResumoCapacidadeGeotecnica,
     calcular_capacidade_todos_metodos,
+    comparar_fs_com_e_sem_pce,
     curva_capacidade_por_comprimento,
     dimensionar_comprimento_estaca,
 )
@@ -26,10 +28,12 @@ from fundacao.geotecnia.fundacao_direta import (
     tensao_ponta_rocha_necessaria_mpa,
 )
 from fundacao.geotecnia.grupo_radier_estaqueado import (
+    ComparativoIsoladaVsConjunto,
     ResultadoGrupoEstacas,
     ResultadoRadierEstaqueado,
     calcular_grupo_estacas,
     calcular_radier_estaqueado_pdr,
+    comparar_isolada_vs_conjunto,
 )
 from fundacao.geotecnia.vibracao_cravacao import ResultadoVibracaoCravacao, avaliar_vibracao_cravacao
 
@@ -43,9 +47,11 @@ __all__ = [
     "calcular_antunes_cabral",
     "calcular_teixeira",
     "calcular_alonso",
+    "ComparativoFSPCE",
     "ResultadoMetodoGeotecnico",
     "ResumoCapacidadeGeotecnica",
     "calcular_capacidade_todos_metodos",
+    "comparar_fs_com_e_sem_pce",
     "curva_capacidade_por_comprimento",
     "dimensionar_comprimento_estaca",
     "ParametrosSoloDireta",
@@ -58,10 +64,12 @@ __all__ = [
     "carregar_ensaios_yaml",
     "estudo_troca_solo",
     "tensao_ponta_rocha_necessaria_mpa",
+    "ComparativoIsoladaVsConjunto",
     "ResultadoGrupoEstacas",
     "ResultadoRadierEstaqueado",
     "calcular_grupo_estacas",
     "calcular_radier_estaqueado_pdr",
+    "comparar_isolada_vs_conjunto",
     "ResultadoVibracaoCravacao",
     "avaliar_vibracao_cravacao",
 ]

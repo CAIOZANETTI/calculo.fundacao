@@ -141,3 +141,75 @@ def dimensionar_comprimento_estaca(
             return res
         comp += passo_m
     return None
+
+
+@dataclass(frozen=True)
+class ComparativoFSPCE:
+    """Impacto normativo da realização de Prova de Carga Estática prévia (NBR 6122:2022 item 6.2.1.2.2)."""
+
+    sondagem_codigo: str
+    diametro_cm: float
+    comprimento_m: float
+    carga_solicitante_tf: float
+    rl_medio_5_metodos_tf: float
+    r_ult_medio_5_metodos_tf: float
+    p_adm_fs_20_sem_pce_tf: float
+    p_adm_fs_16_com_pce_tf: float
+    ganho_capacidade_pct: float
+    atende_em_solo_fs_20: bool
+    atende_em_solo_fs_16: bool
+    qp_rocha_req_fs_20_mpa: float
+    qp_rocha_req_fs_16_mpa: float
+
+
+def comparar_fs_com_e_sem_pce(
+    sondagem: Sondagem,
+    diametro_cm: float,
+    comprimento_m: float,
+    cota_arrasamento_m: float,
+    carga_solicitante_tf: float,
+    fs_sem_pce: float = 2.0,
+    fs_com_pce: float = 1.6,
+) -> ComparativoFSPCE:
+    """Compara a capacidade admissível em solo pelos 5 métodos SPT com FS=2,0 (sem PCE) vs. FS=1,6 (com PCE).
+
+    Fundamentação normativa: ABNT NBR 6122:2022, Tabela 1 e item 6.2.1.2.2:
+      - Sem PCE prévia: FS global = 2,0 (maior incerteza de correlação SPT → resistência real);
+      - Com PCE prévia executada até 2× carga de trabalho ou ruptura: FS global = 1,6 (+25% em P_adm).
+    """
+    from fundacao.geotecnia.fundacao_direta import tensao_ponta_rocha_necessaria_mpa
+    from fundacao.normas.nbr6118 import KN_PARA_TF
+
+    res20 = calcular_capacidade_todos_metodos(
+        sondagem=sondagem,
+        diametro_m=diametro_cm / 100.0,
+        comprimento_m=comprimento_m,
+        cota_arrasamento_m=cota_arrasamento_m,
+        fs=fs_sem_pce,
+        incluir_todos_5=True,
+    )
+    rl_med = sum(r.rl_kn * KN_PARA_TF for r in res20.resultados) / len(res20.resultados)
+    r_ult_med = sum(r.r_ult_kn * KN_PARA_TF for r in res20.resultados) / len(res20.resultados)
+    p_adm_20 = r_ult_med / fs_sem_pce
+    p_adm_16 = r_ult_med / fs_com_pce
+    ganho_pct = ((p_adm_16 / p_adm_20) - 1.0) * 100.0 if p_adm_20 > 0 else 0.0
+
+    qp_20 = tensao_ponta_rocha_necessaria_mpa(carga_solicitante_tf, rl_med, diametro_cm, fs=fs_sem_pce)
+    qp_16 = tensao_ponta_rocha_necessaria_mpa(carga_solicitante_tf, rl_med, diametro_cm, fs=fs_com_pce)
+
+    return ComparativoFSPCE(
+        sondagem_codigo=sondagem.codigo,
+        diametro_cm=diametro_cm,
+        comprimento_m=comprimento_m,
+        carga_solicitante_tf=carga_solicitante_tf,
+        rl_medio_5_metodos_tf=round(rl_med, 1),
+        r_ult_medio_5_metodos_tf=round(r_ult_med, 1),
+        p_adm_fs_20_sem_pce_tf=round(p_adm_20, 1),
+        p_adm_fs_16_com_pce_tf=round(p_adm_16, 1),
+        ganho_capacidade_pct=round(ganho_pct, 1),
+        atende_em_solo_fs_20=p_adm_20 >= carga_solicitante_tf,
+        atende_em_solo_fs_16=p_adm_16 >= carga_solicitante_tf,
+        qp_rocha_req_fs_20_mpa=qp_20,
+        qp_rocha_req_fs_16_mpa=qp_16,
+    )
+
