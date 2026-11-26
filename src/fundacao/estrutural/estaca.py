@@ -120,3 +120,46 @@ def verificar_estaca_helice_continua(
         comprimento_armado_min_m=req.comprimento_min_armado_m,
         alertas=alertas,
     )
+
+
+@dataclass(frozen=True)
+class ResultadoComprimentoElastico:
+    diametro_cm: float
+    inercia_m4: float
+    ep_ip_kn_m2: float
+    nh_kn_m3: float
+    fator_rigidez_t_m: float
+    comprimento_armado_recomendado_m: float
+    atende_gaiola_6m_pbge: bool
+
+
+def calcular_comprimento_elastico_estaca(
+    diametro_cm: float,
+    nh_kn_m3: float = 2_500.0,  # argila siltosa mole a média (NSPT 4–7, Terzaghi/Matlock-Reese: 1.500–3.500 kN/m³)
+    concreto: Concreto = Concreto(fck_mpa=30.0, caa=ClasseAgressividade.III),
+    fator_fissuracao_ei: float = 0.60,  # NBR 6118 rigidez secante fissurada à flexocompressão
+) -> ResultadoComprimentoElastico:
+    """Calcula o comprimento característico elástico T (Matlock & Reese / Velloso & Lopes) para
+    definir o comprimento mínimo armado contra flexão/excentricidade no topo da estaca.
+
+    Fórmulas:
+      I_p = π · D⁴ / 64
+      T   = (E_p · I_p / n_h)^(1/5)
+      L_arm,rec ≈ max(4,0 m; 2,5 · T)   (trecho onde o momento fletor é significativo; z_max ≈ 1,35·T)
+    """
+    d_m = diametro_cm / 100.0
+    inercia_m4 = math.pi * (d_m ** 4) / 64.0
+    ep_kpa = concreto.ecs_mpa * 1000.0 * fator_fissuracao_ei
+    ep_ip = ep_kpa * inercia_m4
+    t_m = (ep_ip / nh_kn_m3) ** 0.2
+    l_rec = max(4.0, math.ceil(2.5 * t_m * 2.0) / 2.0)  # arredondado para cima em múltiplos de 0,5 m
+
+    return ResultadoComprimentoElastico(
+        diametro_cm=diametro_cm,
+        inercia_m4=round(inercia_m4, 6),
+        ep_ip_kn_m2=round(ep_ip, 1),
+        nh_kn_m3=nh_kn_m3,
+        fator_rigidez_t_m=round(t_m, 2),
+        comprimento_armado_recomendado_m=l_rec,
+        atende_gaiola_6m_pbge=6.0 >= l_rec,
+    )

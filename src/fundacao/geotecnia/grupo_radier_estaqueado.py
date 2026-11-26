@@ -167,3 +167,106 @@ def calcular_radier_estaqueado_pdr(
         reducao_recalque_pct=round(reducao_pct, 1),
         atende_recalque_els=w_pr_mm <= limite_recalque_mm,
     )
+
+
+@dataclass(frozen=True)
+class ComparativoIsoladaVsConjunto:
+    """Compara o comportamento de 1 estaca isolada (PCE) versus o conjunto inteiro trabalhando sob o tanque."""
+
+    nome: str
+    n_estacas: int
+    diametro_cm: float
+    espacamento_medio_m: float
+    espacamento_sobre_d: float
+    eficiencia_converse_labarre: float
+    rigidez_estaca_isolada_kp1_kn_m: float
+    recalque_estaca_isolada_mm: float
+    recalque_conjunto_pdr_mm: float
+    recalque_conjunto_2l3_mm: float
+    fator_amplificacao_recalque_rs: float
+    classificacao_interferencia: str
+
+
+def comparar_isolada_vs_conjunto(
+    nome: str,
+    b_m: float,
+    l_m: float,
+    carga_total_tf: float,
+    n_linhas: int,
+    n_colunas: int,
+    n_estacas_reais: int,
+    diametro_m: float,
+    comprimento_m: float,
+    espacamento_m: float,
+    es_solo_superficial_kpa: float = 4_500.0,
+    es_solo_profundo_kpa: float = 35_000.0,
+    poisson: float = 0.35,
+    e_concreto_kpa: float = 30_000_000.0,
+) -> ComparativoIsoladaVsConjunto:
+    """Quantifica a interferência estaca-estaca (Poulos & Davis / Randolph & Wroth / Velloso & Lopes).
+
+    Demonstra por que o recalque medido em uma estaca isolada na PCE (w_1 ≈ 1–3 mm) é multiplicado
+    pelo fator de amplificação de grupo R_s = w_grupo / w_1 quando dezenas de estacas atuam juntas
+    com superposição de bulbos de tensão no subsolo.
+    """
+    pdr = calcular_radier_estaqueado_pdr(
+        b_m=b_m,
+        l_m=l_m,
+        carga_total_tf=carga_total_tf,
+        n_estacas=n_estacas_reais,
+        diametro_m=diametro_m,
+        comprimento_m=comprimento_m,
+        es_solo_superficial_kpa=es_solo_superficial_kpa,
+        es_solo_profundo_kpa=es_solo_profundo_kpa,
+        poisson=poisson,
+        e_concreto_kpa=e_concreto_kpa,
+    )
+    grp = calcular_grupo_estacas(
+        n_linhas=n_linhas,
+        n_colunas=n_colunas,
+        diametro_m=diametro_m,
+        comprimento_m=comprimento_m,
+        espacamento_m=espacamento_m,
+        carga_total_tf=carga_total_tf,
+        es_solo_ponta_kpa=es_solo_profundo_kpa,
+        e_concreto_kpa=e_concreto_kpa,
+    )
+
+    # Rigidez da estaca isolada K_p1 (Randolph & Wroth)
+    g_prof = es_solo_profundo_kpa / (2.0 * (1.0 + poisson))
+    r0 = diametro_m / 2.0
+    rm = max(2.5 * comprimento_m * (1.0 - poisson), 5.0 * r0)
+    zeta = math.log(rm / r0)
+    mu_l = math.sqrt(2.0 / (zeta * (e_concreto_kpa / g_prof))) * (comprimento_m / r0)
+    tanh_mul = math.tanh(mu_l) / mu_l if mu_l > 1e-6 else 1.0
+    kp1_num = (4.0 / (1.0 - poisson)) + (2.0 * math.pi / zeta) * (comprimento_m / r0) * tanh_mul
+    kp1_den = 1.0 + (4.0 / (math.pi * (1.0 - poisson))) * (g_prof / e_concreto_kpa) * (comprimento_m / r0) * tanh_mul
+    kp1 = g_prof * r0 * (kp1_num / kp1_den)
+
+    p_est_kn = (carga_total_tf * TF_PARA_KN) / max(n_estacas_reais, 1)
+    w1_mm = (p_est_kn / kp1) * 1000.0
+    rs = pdr.recalque_radier_estaqueado_mm / w1_mm if w1_mm > 1e-6 else 1.0
+
+    s_sobre_d = espacamento_m / diametro_m
+    if s_sobre_d < 3.0:
+        clas = "ALTA interferência (s/D < 3,0 — superposição severa de bulbos, típico de blocos duplos)"
+    elif s_sobre_d < 4.5:
+        clas = "MODERADA interferência (3,0 ≤ s/D < 4,5 — atende NBR 6122 com boa distribuição)"
+    else:
+        clas = "BAIXA interferência (s/D ≥ 4,5 — estacas bem espaçadas, mínima sobreposição de bulbos)"
+
+    return ComparativoIsoladaVsConjunto(
+        nome=nome,
+        n_estacas=n_estacas_reais,
+        diametro_cm=round(diametro_m * 100.0, 1),
+        espacamento_medio_m=round(espacamento_m, 2),
+        espacamento_sobre_d=round(s_sobre_d, 2),
+        eficiencia_converse_labarre=grp.eficiencia_converse_labarre,
+        rigidez_estaca_isolada_kp1_kn_m=round(kp1, 1),
+        recalque_estaca_isolada_mm=round(w1_mm, 2),
+        recalque_conjunto_pdr_mm=pdr.recalque_radier_estaqueado_mm,
+        recalque_conjunto_2l3_mm=grp.recalque_total_grupo_mm,
+        fator_amplificacao_recalque_rs=round(rs, 2),
+        classificacao_interferencia=clas,
+    )
+
