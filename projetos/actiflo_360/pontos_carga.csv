@@ -1,0 +1,31 @@
+id,nk_tf,n_estacas_pbes,cota_topo_bloco_m,cota_arrasamento_m,tipo_elemento,orientacao_bloco_2e,observacao
+PC1,26,1,238.300,237.650,parede,,
+PC2,30,1,238.300,237.650,parede,,
+PC3,41,1,238.300,237.650,parede,,
+PC4,36,1,238.300,237.650,parede,,
+PC5,41,1,238.300,237.650,parede,,
+PC6,62,2,238.300,237.650,parede,vertical,
+PC7,29,1,238.300,237.650,parede,,
+PC8,63,2,238.300,237.650,parede,horizontal,
+PC9,54,1,238.300,237.650,parede,,
+PC10,66,2,238.300,237.650,parede,horizontal,
+PC11,55,1,238.300,237.650,parede,,Maior carga em bloco de 1 estaca no 360 L/s
+PC12,47,1,238.300,237.650,parede,,
+PC13,70,2,238.300,237.650,parede,vertical,
+PC14,68,2,238.300,237.650,parede,vertical,
+PC15,35,1,238.300,237.650,parede,,
+PC16,57,2,238.300,237.650,parede,vertical,Menor carga em bloco de 2 estacas no 360 L/s
+PC17,53,1,238.300,237.650,parede,,
+PC18,53,1,238.300,237.650,parede,,
+PC19,60,2,238.300,237.650,parede,vertical,
+PC20,13,1,238.100,237.450,parede,,
+PC21,44,1,238.100,237.450,parede,,
+PC22,71,2,238.100,237.450,parede,vertical,Maior carga total em ponto no 360 L/s
+PC23,71,2,238.100,237.450,parede,vertical,Maior carga total em ponto no 360 L/s
+PC24,42,1,238.100,237.450,parede,,
+PC25,13,1,238.100,237.450,parede,,
+PC26,24,1,237.800,237.150,parede,,
+PC27,23,1,237.800,237.150,parede,,
+PC28,15,1,237.800,237.150,parede,,
+PC29,4,1,239.800,239.150,escada,,Apoio de escada
+PC30,4,1,239.800,239.150,escada,,Apoio de escada
