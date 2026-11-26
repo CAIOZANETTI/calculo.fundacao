@@ -4,6 +4,8 @@ from fundacao.geotecnia.sondagem import CamadaSPT, Sondagem, TipoSolo, carregar_
 from fundacao.geotecnia.aoki_velloso import calcular_aoki_velloso
 from fundacao.geotecnia.decourt_quaresma import calcular_decourt_quaresma
 from fundacao.geotecnia.antunes_cabral import calcular_antunes_cabral
+from fundacao.geotecnia.teixeira import calcular_teixeira
+from fundacao.geotecnia.alonso import calcular_alonso
 from fundacao.geotecnia.capacidade import (
     ResultadoMetodoGeotecnico,
     ResumoCapacidadeGeotecnica,
@@ -20,6 +22,13 @@ from fundacao.geotecnia.fundacao_direta import (
     carregar_ensaios_yaml,
     estudo_troca_solo,
 )
+from fundacao.geotecnia.grupo_radier_estaqueado import (
+    ResultadoGrupoEstacas,
+    ResultadoRadierEstaqueado,
+    calcular_grupo_estacas,
+    calcular_radier_estaqueado_pdr,
+)
+from fundacao.geotecnia.vibracao_cravacao import ResultadoVibracaoCravacao, avaliar_vibracao_cravacao
 
 __all__ = [
     "CamadaSPT",
@@ -29,6 +38,8 @@ __all__ = [
     "calcular_aoki_velloso",
     "calcular_decourt_quaresma",
     "calcular_antunes_cabral",
+    "calcular_teixeira",
+    "calcular_alonso",
     "ResultadoMetodoGeotecnico",
     "ResumoCapacidadeGeotecnica",
     "calcular_capacidade_todos_metodos",
@@ -41,4 +52,10 @@ __all__ = [
     "calcular_recalque_adensamento_cm",
     "carregar_ensaios_yaml",
     "estudo_troca_solo",
+    "ResultadoGrupoEstacas",
+    "ResultadoRadierEstaqueado",
+    "calcular_grupo_estacas",
+    "calcular_radier_estaqueado_pdr",
+    "ResultadoVibracaoCravacao",
+    "avaliar_vibracao_cravacao",
 ]

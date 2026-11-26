@@ -11,6 +11,11 @@ from fundacao.estrutural.bloco_2_estacas import (
     ResultadoBloco2Estacas,
     verificar_bloco_2_estacas,
 )
+from fundacao.estrutural.puncao_capitel import (
+    ResultadoPuncaoCapitel,
+    dimensionar_capitel_minimo,
+    verificar_puncao_laje_com_capitel,
+)
 
 __all__ = [
     "ResultadoEstacaEstrutural",
@@ -21,4 +26,7 @@ __all__ = [
     "GeometriaBloco2Estacas",
     "ResultadoBloco2Estacas",
     "verificar_bloco_2_estacas",
+    "ResultadoPuncaoCapitel",
+    "verificar_puncao_laje_com_capitel",
+    "dimensionar_capitel_minimo",
 ]

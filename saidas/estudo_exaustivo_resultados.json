@@ -1,0 +1,1346 @@
+{
+  "matriz_5_metodos_spt": {
+    "actiflo_360": [
+      {
+        "diametro_cm": 40,
+        "p_adm_media_furos_tf": 33.6,
+        "p_adm_pior_furo_tf": 30.9,
+        "furos": [
+          {
+            "furo": "SP-01",
+            "cota_rocha_m": 226.18,
+            "l_ef_m": 11.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 27.02,
+              "Décourt-Quaresma (1978/1996)": 39.06,
+              "Antunes-Cabral (1996)": 24.28,
+              "Teixeira (1996)": 40.88,
+              "Alonso (1996)": 36.27
+            },
+            "p_adm_min_tf": 24.28,
+            "p_adm_media_tf": 33.5,
+            "r_ult_media_tf": 67.0
+          },
+          {
+            "furo": "SP-02",
+            "cota_rocha_m": 225.1,
+            "l_ef_m": 13.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 28.09,
+              "Décourt-Quaresma (1978/1996)": 43.18,
+              "Antunes-Cabral (1996)": 27.28,
+              "Teixeira (1996)": 44.61,
+              "Alonso (1996)": 38.44
+            },
+            "p_adm_min_tf": 27.28,
+            "p_adm_media_tf": 36.32,
+            "r_ult_media_tf": 72.6
+          },
+          {
+            "furo": "SP-03",
+            "cota_rocha_m": 227.07,
+            "l_ef_m": 9.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 26.34,
+              "Décourt-Quaresma (1978/1996)": 35.56,
+              "Antunes-Cabral (1996)": 20.23,
+              "Teixeira (1996)": 38.82,
+              "Alonso (1996)": 33.75
+            },
+            "p_adm_min_tf": 20.23,
+            "p_adm_media_tf": 30.94,
+            "r_ult_media_tf": 61.9
+          },
+          {
+            "furo": "SP-04",
+            "cota_rocha_m": 227.56,
+            "l_ef_m": 9.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 28.38,
+              "Décourt-Quaresma (1978/1996)": 38.1,
+              "Antunes-Cabral (1996)": 21.91,
+              "Teixeira (1996)": 42.31,
+              "Alonso (1996)": 36.6
+            },
+            "p_adm_min_tf": 21.91,
+            "p_adm_media_tf": 33.46,
+            "r_ult_media_tf": 66.9
+          }
+        ]
+      },
+      {
+        "diametro_cm": 50,
+        "p_adm_media_furos_tf": 44.3,
+        "p_adm_pior_furo_tf": 41.1,
+        "furos": [
+          {
+            "furo": "SP-01",
+            "cota_rocha_m": 226.18,
+            "l_ef_m": 11.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 37.23,
+              "Décourt-Quaresma (1978/1996)": 50.38,
+              "Antunes-Cabral (1996)": 30.8,
+              "Teixeira (1996)": 53.23,
+              "Alonso (1996)": 48.98
+            },
+            "p_adm_min_tf": 30.8,
+            "p_adm_media_tf": 44.12,
+            "r_ult_media_tf": 88.3
+          },
+          {
+            "furo": "SP-02",
+            "cota_rocha_m": 225.1,
+            "l_ef_m": 13.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 38.1,
+              "Décourt-Quaresma (1978/1996)": 55.35,
+              "Antunes-Cabral (1996)": 34.49,
+              "Teixeira (1996)": 58.12,
+              "Alonso (1996)": 51.27
+            },
+            "p_adm_min_tf": 34.49,
+            "p_adm_media_tf": 47.47,
+            "r_ult_media_tf": 94.9
+          },
+          {
+            "furo": "SP-03",
+            "cota_rocha_m": 227.07,
+            "l_ef_m": 9.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 36.38,
+              "Décourt-Quaresma (1978/1996)": 46.19,
+              "Antunes-Cabral (1996)": 25.73,
+              "Teixeira (1996)": 51.17,
+              "Alonso (1996)": 46.26
+            },
+            "p_adm_min_tf": 25.73,
+            "p_adm_media_tf": 41.15,
+            "r_ult_media_tf": 82.3
+          },
+          {
+            "furo": "SP-04",
+            "cota_rocha_m": 227.56,
+            "l_ef_m": 9.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 39.16,
+              "Décourt-Quaresma (1978/1996)": 49.55,
+              "Antunes-Cabral (1996)": 27.87,
+              "Teixeira (1996)": 56.05,
+              "Alonso (1996)": 50.16
+            },
+            "p_adm_min_tf": 27.87,
+            "p_adm_media_tf": 44.56,
+            "r_ult_media_tf": 89.1
+          }
+        ]
+      },
+      {
+        "diametro_cm": 60,
+        "p_adm_media_furos_tf": 56.1,
+        "p_adm_pior_furo_tf": 52.4,
+        "furos": [
+          {
+            "furo": "SP-01",
+            "cota_rocha_m": 226.18,
+            "l_ef_m": 11.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 48.82,
+              "Décourt-Quaresma (1978/1996)": 62.33,
+              "Antunes-Cabral (1996)": 37.5,
+              "Teixeira (1996)": 67.14,
+              "Alonso (1996)": 63.15
+            },
+            "p_adm_min_tf": 37.5,
+            "p_adm_media_tf": 55.79,
+            "r_ult_media_tf": 111.6
+          },
+          {
+            "furo": "SP-02",
+            "cota_rocha_m": 225.1,
+            "l_ef_m": 13.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 49.31,
+              "Décourt-Quaresma (1978/1996)": 68.08,
+              "Antunes-Cabral (1996)": 41.86,
+              "Teixeira (1996)": 72.74,
+              "Alonso (1996)": 65.4
+            },
+            "p_adm_min_tf": 41.86,
+            "p_adm_media_tf": 59.48,
+            "r_ult_media_tf": 119.0
+          },
+          {
+            "furo": "SP-03",
+            "cota_rocha_m": 227.07,
+            "l_ef_m": 9.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 47.79,
+              "Décourt-Quaresma (1978/1996)": 57.52,
+              "Antunes-Cabral (1996)": 31.42,
+              "Teixeira (1996)": 65.1,
+              "Alonso (1996)": 60.39
+            },
+            "p_adm_min_tf": 31.42,
+            "p_adm_media_tf": 52.44,
+            "r_ult_media_tf": 104.9
+          },
+          {
+            "furo": "SP-04",
+            "cota_rocha_m": 227.56,
+            "l_ef_m": 9.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 51.41,
+              "Décourt-Quaresma (1978/1996)": 61.76,
+              "Antunes-Cabral (1996)": 34.02,
+              "Teixeira (1996)": 71.4,
+              "Alonso (1996)": 65.48
+            },
+            "p_adm_min_tf": 34.02,
+            "p_adm_media_tf": 56.81,
+            "r_ult_media_tf": 113.6
+          }
+        ]
+      },
+      {
+        "diametro_cm": 70,
+        "p_adm_media_furos_tf": 68.9,
+        "p_adm_pior_furo_tf": 64.8,
+        "furos": [
+          {
+            "furo": "SP-01",
+            "cota_rocha_m": 226.18,
+            "l_ef_m": 11.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 61.8,
+              "Décourt-Quaresma (1978/1996)": 74.91,
+              "Antunes-Cabral (1996)": 44.38,
+              "Teixeira (1996)": 82.13,
+              "Alonso (1996)": 78.78
+            },
+            "p_adm_min_tf": 44.38,
+            "p_adm_media_tf": 68.4,
+            "r_ult_media_tf": 136.8
+          },
+          {
+            "furo": "SP-02",
+            "cota_rocha_m": 225.1,
+            "l_ef_m": 13.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 61.72,
+              "Décourt-Quaresma (1978/1996)": 81.36,
+              "Antunes-Cabral (1996)": 49.38,
+              "Teixeira (1996)": 88.35,
+              "Alonso (1996)": 80.81
+            },
+            "p_adm_min_tf": 49.38,
+            "p_adm_media_tf": 72.32,
+            "r_ult_media_tf": 144.6
+          },
+          {
+            "furo": "SP-03",
+            "cota_rocha_m": 227.07,
+            "l_ef_m": 9.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 60.6,
+              "Décourt-Quaresma (1978/1996)": 69.54,
+              "Antunes-Cabral (1996)": 37.29,
+              "Teixeira (1996)": 80.27,
+              "Alonso (1996)": 76.14
+            },
+            "p_adm_min_tf": 37.29,
+            "p_adm_media_tf": 64.77,
+            "r_ult_media_tf": 129.5
+          },
+          {
+            "furo": "SP-04",
+            "cota_rocha_m": 227.56,
+            "l_ef_m": 9.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 65.14,
+              "Décourt-Quaresma (1978/1996)": 74.75,
+              "Antunes-Cabral (1996)": 40.37,
+              "Teixeira (1996)": 88.13,
+              "Alonso (1996)": 82.56
+            },
+            "p_adm_min_tf": 40.37,
+            "p_adm_media_tf": 70.19,
+            "r_ult_media_tf": 140.4
+          }
+        ]
+      },
+      {
+        "diametro_cm": 80,
+        "p_adm_media_furos_tf": 82.5,
+        "p_adm_pior_furo_tf": 78.0,
+        "furos": [
+          {
+            "furo": "SP-01",
+            "cota_rocha_m": 226.18,
+            "l_ef_m": 11.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 76.15,
+              "Décourt-Quaresma (1978/1996)": 88.11,
+              "Antunes-Cabral (1996)": 51.44,
+              "Teixeira (1996)": 98.68,
+              "Alonso (1996)": 95.87
+            },
+            "p_adm_min_tf": 51.44,
+            "p_adm_media_tf": 82.05,
+            "r_ult_media_tf": 164.1
+          },
+          {
+            "furo": "SP-02",
+            "cota_rocha_m": 225.1,
+            "l_ef_m": 13.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 75.33,
+              "Décourt-Quaresma (1978/1996)": 95.19,
+              "Antunes-Cabral (1996)": 57.06,
+              "Teixeira (1996)": 102.62,
+              "Alonso (1996)": 97.51
+            },
+            "p_adm_min_tf": 57.06,
+            "p_adm_media_tf": 85.54,
+            "r_ult_media_tf": 171.1
+          },
+          {
+            "furo": "SP-03",
+            "cota_rocha_m": 227.07,
+            "l_ef_m": 9.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 74.78,
+              "Décourt-Quaresma (1978/1996)": 82.27,
+              "Antunes-Cabral (1996)": 43.34,
+              "Teixeira (1996)": 95.97,
+              "Alonso (1996)": 93.52
+            },
+            "p_adm_min_tf": 43.34,
+            "p_adm_media_tf": 77.98,
+            "r_ult_media_tf": 155.9
+          },
+          {
+            "furo": "SP-04",
+            "cota_rocha_m": 227.56,
+            "l_ef_m": 9.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 80.34,
+              "Décourt-Quaresma (1978/1996)": 88.5,
+              "Antunes-Cabral (1996)": 46.9,
+              "Teixeira (1996)": 105.06,
+              "Alonso (1996)": 101.4
+            },
+            "p_adm_min_tf": 46.9,
+            "p_adm_media_tf": 84.44,
+            "r_ult_media_tf": 168.9
+          }
+        ]
+      }
+    ],
+    "actiflo_600": [
+      {
+        "diametro_cm": 40,
+        "p_adm_media_furos_tf": 59.3,
+        "p_adm_pior_furo_tf": 49.6,
+        "furos": [
+          {
+            "furo": "SP-05",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 40.91,
+              "Décourt-Quaresma (1978/1996)": 56.97,
+              "Antunes-Cabral (1996)": 35.95,
+              "Teixeira (1996)": 63.51,
+              "Alonso (1996)": 50.55
+            },
+            "p_adm_min_tf": 35.95,
+            "p_adm_media_tf": 49.58,
+            "r_ult_media_tf": 99.2
+          },
+          {
+            "furo": "SP-06",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.8,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 49.49,
+              "Décourt-Quaresma (1978/1996)": 68.51,
+              "Antunes-Cabral (1996)": 44.33,
+              "Teixeira (1996)": 78.54,
+              "Alonso (1996)": 59.18
+            },
+            "p_adm_min_tf": 44.33,
+            "p_adm_media_tf": 60.01,
+            "r_ult_media_tf": 120.0
+          },
+          {
+            "furo": "SP-08",
+            "cota_rocha_m": 223.11,
+            "l_ef_m": 14.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 49.9,
+              "Décourt-Quaresma (1978/1996)": 67.58,
+              "Antunes-Cabral (1996)": 44.9,
+              "Teixeira (1996)": 76.66,
+              "Alonso (1996)": 59.53
+            },
+            "p_adm_min_tf": 44.9,
+            "p_adm_media_tf": 59.71,
+            "r_ult_media_tf": 119.4
+          },
+          {
+            "furo": "SP-09",
+            "cota_rocha_m": 224.3,
+            "l_ef_m": 12.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 54.69,
+              "Décourt-Quaresma (1978/1996)": 78.14,
+              "Antunes-Cabral (1996)": 54.24,
+              "Teixeira (1996)": 90.73,
+              "Alonso (1996)": 68.7
+            },
+            "p_adm_min_tf": 54.24,
+            "p_adm_media_tf": 69.3,
+            "r_ult_media_tf": 138.6
+          },
+          {
+            "furo": "SP-10",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 48.09,
+              "Décourt-Quaresma (1978/1996)": 65.78,
+              "Antunes-Cabral (1996)": 42.54,
+              "Teixeira (1996)": 75.31,
+              "Alonso (1996)": 56.95
+            },
+            "p_adm_min_tf": 42.54,
+            "p_adm_media_tf": 57.73,
+            "r_ult_media_tf": 115.5
+          }
+        ]
+      },
+      {
+        "diametro_cm": 50,
+        "p_adm_media_furos_tf": 78.2,
+        "p_adm_pior_furo_tf": 65.8,
+        "furos": [
+          {
+            "furo": "SP-05",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 56.43,
+              "Décourt-Quaresma (1978/1996)": 73.97,
+              "Antunes-Cabral (1996)": 45.63,
+              "Teixeira (1996)": 85.55,
+              "Alonso (1996)": 67.59
+            },
+            "p_adm_min_tf": 45.63,
+            "p_adm_media_tf": 65.83,
+            "r_ult_media_tf": 131.7
+          },
+          {
+            "furo": "SP-06",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.8,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 68.08,
+              "Décourt-Quaresma (1978/1996)": 89.06,
+              "Antunes-Cabral (1996)": 56.23,
+              "Teixeira (1996)": 104.64,
+              "Alonso (1996)": 78.38
+            },
+            "p_adm_min_tf": 56.23,
+            "p_adm_media_tf": 79.28,
+            "r_ult_media_tf": 158.6
+          },
+          {
+            "furo": "SP-08",
+            "cota_rocha_m": 223.11,
+            "l_ef_m": 14.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 68.83,
+              "Décourt-Quaresma (1978/1996)": 87.6,
+              "Antunes-Cabral (1996)": 56.96,
+              "Teixeira (1996)": 101.92,
+              "Alonso (1996)": 78.81
+            },
+            "p_adm_min_tf": 56.96,
+            "p_adm_media_tf": 78.82,
+            "r_ult_media_tf": 157.6
+          },
+          {
+            "furo": "SP-09",
+            "cota_rocha_m": 224.3,
+            "l_ef_m": 12.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 74.35,
+              "Décourt-Quaresma (1978/1996)": 100.91,
+              "Antunes-Cabral (1996)": 68.58,
+              "Teixeira (1996)": 118.99,
+              "Alonso (1996)": 90.28
+            },
+            "p_adm_min_tf": 68.58,
+            "p_adm_media_tf": 90.62,
+            "r_ult_media_tf": 181.2
+          },
+          {
+            "furo": "SP-10",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 66.56,
+              "Décourt-Quaresma (1978/1996)": 85.71,
+              "Antunes-Cabral (1996)": 54.01,
+              "Teixeira (1996)": 100.53,
+              "Alonso (1996)": 75.59
+            },
+            "p_adm_min_tf": 54.01,
+            "p_adm_media_tf": 76.48,
+            "r_ult_media_tf": 153.0
+          }
+        ]
+      },
+      {
+        "diametro_cm": 60,
+        "p_adm_media_furos_tf": 98.8,
+        "p_adm_pior_furo_tf": 83.4,
+        "furos": [
+          {
+            "furo": "SP-05",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 74.07,
+              "Décourt-Quaresma (1978/1996)": 92.08,
+              "Antunes-Cabral (1996)": 55.59,
+              "Teixeira (1996)": 109.0,
+              "Alonso (1996)": 86.4
+            },
+            "p_adm_min_tf": 55.59,
+            "p_adm_media_tf": 83.43,
+            "r_ult_media_tf": 166.9
+          },
+          {
+            "furo": "SP-06",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.8,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 89.16,
+              "Décourt-Quaresma (1978/1996)": 110.98,
+              "Antunes-Cabral (1996)": 68.45,
+              "Teixeira (1996)": 133.14,
+              "Alonso (1996)": 99.34
+            },
+            "p_adm_min_tf": 68.45,
+            "p_adm_media_tf": 100.21,
+            "r_ult_media_tf": 200.4
+          },
+          {
+            "furo": "SP-08",
+            "cota_rocha_m": 223.11,
+            "l_ef_m": 14.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 90.33,
+              "Décourt-Quaresma (1978/1996)": 108.87,
+              "Antunes-Cabral (1996)": 69.36,
+              "Teixeira (1996)": 129.27,
+              "Alonso (1996)": 99.86
+            },
+            "p_adm_min_tf": 69.36,
+            "p_adm_media_tf": 99.54,
+            "r_ult_media_tf": 199.1
+          },
+          {
+            "furo": "SP-09",
+            "cota_rocha_m": 224.3,
+            "l_ef_m": 12.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 96.41,
+              "Décourt-Quaresma (1978/1996)": 124.99,
+              "Antunes-Cabral (1996)": 83.24,
+              "Teixeira (1996)": 149.83,
+              "Alonso (1996)": 113.62
+            },
+            "p_adm_min_tf": 83.24,
+            "p_adm_media_tf": 113.62,
+            "r_ult_media_tf": 227.2
+          },
+          {
+            "furo": "SP-10",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 87.61,
+              "Décourt-Quaresma (1978/1996)": 107.03,
+              "Antunes-Cabral (1996)": 65.82,
+              "Teixeira (1996)": 128.3,
+              "Alonso (1996)": 95.99
+            },
+            "p_adm_min_tf": 65.82,
+            "p_adm_media_tf": 96.95,
+            "r_ult_media_tf": 193.9
+          }
+        ]
+      },
+      {
+        "diametro_cm": 70,
+        "p_adm_media_furos_tf": 120.9,
+        "p_adm_pior_furo_tf": 102.5,
+        "furos": [
+          {
+            "furo": "SP-05",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 93.83,
+              "Décourt-Quaresma (1978/1996)": 111.3,
+              "Antunes-Cabral (1996)": 65.82,
+              "Teixeira (1996)": 134.57,
+              "Alonso (1996)": 106.96
+            },
+            "p_adm_min_tf": 65.82,
+            "p_adm_media_tf": 102.5,
+            "r_ult_media_tf": 205.0
+          },
+          {
+            "furo": "SP-06",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.8,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 112.72,
+              "Décourt-Quaresma (1978/1996)": 134.27,
+              "Antunes-Cabral (1996)": 80.99,
+              "Teixeira (1996)": 164.17,
+              "Alonso (1996)": 122.06
+            },
+            "p_adm_min_tf": 80.99,
+            "p_adm_media_tf": 122.84,
+            "r_ult_media_tf": 245.7
+          },
+          {
+            "furo": "SP-08",
+            "cota_rocha_m": 223.11,
+            "l_ef_m": 14.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 114.41,
+              "Décourt-Quaresma (1978/1996)": 131.39,
+              "Antunes-Cabral (1996)": 82.1,
+              "Teixeira (1996)": 158.93,
+              "Alonso (1996)": 122.67
+            },
+            "p_adm_min_tf": 82.1,
+            "p_adm_media_tf": 121.9,
+            "r_ult_media_tf": 243.8
+          },
+          {
+            "furo": "SP-09",
+            "cota_rocha_m": 224.3,
+            "l_ef_m": 12.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 120.85,
+              "Décourt-Quaresma (1978/1996)": 150.36,
+              "Antunes-Cabral (1996)": 98.2,
+              "Teixeira (1996)": 183.03,
+              "Alonso (1996)": 138.73
+            },
+            "p_adm_min_tf": 98.2,
+            "p_adm_media_tf": 138.23,
+            "r_ult_media_tf": 276.5
+          },
+          {
+            "furo": "SP-10",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 111.24,
+              "Décourt-Quaresma (1978/1996)": 129.75,
+              "Antunes-Cabral (1996)": 77.97,
+              "Teixeira (1996)": 158.62,
+              "Alonso (1996)": 118.16
+            },
+            "p_adm_min_tf": 77.97,
+            "p_adm_media_tf": 119.15,
+            "r_ult_media_tf": 238.3
+          }
+        ]
+      },
+      {
+        "diametro_cm": 80,
+        "p_adm_media_furos_tf": 144.3,
+        "p_adm_pior_furo_tf": 122.6,
+        "furos": [
+          {
+            "furo": "SP-05",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.6,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 115.71,
+              "Décourt-Quaresma (1978/1996)": 131.62,
+              "Antunes-Cabral (1996)": 76.33,
+              "Teixeira (1996)": 160.14,
+              "Alonso (1996)": 129.29
+            },
+            "p_adm_min_tf": 76.33,
+            "p_adm_media_tf": 122.62,
+            "r_ult_media_tf": 245.2
+          },
+          {
+            "furo": "SP-06",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.8,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 138.77,
+              "Décourt-Quaresma (1978/1996)": 158.93,
+              "Antunes-Cabral (1996)": 93.86,
+              "Teixeira (1996)": 195.84,
+              "Alonso (1996)": 146.55
+            },
+            "p_adm_min_tf": 93.86,
+            "p_adm_media_tf": 146.79,
+            "r_ult_media_tf": 293.6
+          },
+          {
+            "furo": "SP-08",
+            "cota_rocha_m": 223.11,
+            "l_ef_m": 14.0,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 141.07,
+              "Décourt-Quaresma (1978/1996)": 155.15,
+              "Antunes-Cabral (1996)": 95.17,
+              "Teixeira (1996)": 189.98,
+              "Alonso (1996)": 147.25
+            },
+            "p_adm_min_tf": 95.17,
+            "p_adm_media_tf": 145.72,
+            "r_ult_media_tf": 291.4
+          },
+          {
+            "furo": "SP-09",
+            "cota_rocha_m": 224.3,
+            "l_ef_m": 12.5,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 147.7,
+              "Décourt-Quaresma (1978/1996)": 177.03,
+              "Antunes-Cabral (1996)": 113.48,
+              "Teixeira (1996)": 215.28,
+              "Alonso (1996)": 165.59
+            },
+            "p_adm_min_tf": 113.48,
+            "p_adm_media_tf": 163.82,
+            "r_ult_media_tf": 327.6
+          },
+          {
+            "furo": "SP-10",
+            "cota_rocha_m": null,
+            "l_ef_m": 13.9,
+            "metodos_tf": {
+              "Aoki-Velloso (1975 / Monteiro 1997)": 137.44,
+              "Décourt-Quaresma (1978/1996)": 153.86,
+              "Antunes-Cabral (1996)": 90.46,
+              "Teixeira (1996)": 189.39,
+              "Alonso (1996)": 142.09
+            },
+            "p_adm_min_tf": 90.46,
+            "p_adm_media_tf": 142.65,
+            "r_ult_media_tf": 285.3
+          }
+        ]
+      }
+    ]
+  },
+  "confiabilidade_form": [
+    {
+      "cenario": "360 PBGE atual — Ø40 em PC15/PC24 (42 tf), sem PCE",
+      "r_ult_medio_tf": 67.1,
+      "s_medio_tf": 39.9,
+      "fs_medio": 1.68,
+      "cov_espacial": 0.065,
+      "cov_modelo": 0.22,
+      "cov_resistencia_total": 0.229,
+      "cov_solicitacao": 0.1,
+      "beta_form": 2.02,
+      "probabilidade_ruptura_pf": 0.021864359708689274,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "INSUFICIENTE (β = 2.02 < 3.1 — revisar fundação ou comprovar ponta com PCE)"
+    },
+    {
+      "cenario": "360 PBGE atual — Ø50 em PC11 (55 tf), sem PCE",
+      "r_ult_medio_tf": 88.7,
+      "s_medio_tf": 52.2,
+      "fs_medio": 1.7,
+      "cov_espacial": 0.058,
+      "cov_modelo": 0.22,
+      "cov_resistencia_total": 0.228,
+      "cov_solicitacao": 0.1,
+      "beta_form": 2.07,
+      "probabilidade_ruptura_pf": 0.019319864941292453,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "INSUFICIENTE (β = 2.07 < 3.1 — revisar fundação ou comprovar ponta com PCE)"
+    },
+    {
+      "cenario": "360 Alternativa — Ø70 p/ 55 tf, sem PCE",
+      "r_ult_medio_tf": 137.8,
+      "s_medio_tf": 52.2,
+      "fs_medio": 2.64,
+      "cov_espacial": 0.046,
+      "cov_modelo": 0.22,
+      "cov_resistencia_total": 0.225,
+      "cov_solicitacao": 0.1,
+      "beta_form": 3.9,
+      "probabilidade_ruptura_pf": 4.745888037943624e-05,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "SEGURO (atende CC2/50a β ≥ 3.8)"
+    },
+    {
+      "cenario": "360 Alternativa — Ø70 p/ 55 tf, COM PCE (COV=0,12)",
+      "r_ult_medio_tf": 137.8,
+      "s_medio_tf": 52.2,
+      "fs_medio": 2.64,
+      "cov_espacial": 0.046,
+      "cov_modelo": 0.12,
+      "cov_resistencia_total": 0.129,
+      "cov_solicitacao": 0.1,
+      "beta_form": 5.95,
+      "probabilidade_ruptura_pf": 1.316860676059406e-09,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "SEGURO (atende CC2/50a β ≥ 3.8)"
+    },
+    {
+      "cenario": "360 Alternativa — Ø80 p/ 60 tf, COM PCE (COV=0,12)",
+      "r_ult_medio_tf": 165.0,
+      "s_medio_tf": 57.0,
+      "fs_medio": 2.89,
+      "cov_espacial": 0.041,
+      "cov_modelo": 0.12,
+      "cov_resistencia_total": 0.127,
+      "cov_solicitacao": 0.1,
+      "beta_form": 6.59,
+      "probabilidade_ruptura_pf": 2.2380874931116068e-11,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "SEGURO (atende CC2/50a β ≥ 3.8)"
+    },
+    {
+      "cenario": "600 PBGE atual — Ø40 em P4/PC5 (49 tf), sem PCE",
+      "r_ult_medio_tf": 118.5,
+      "s_medio_tf": 46.5,
+      "fs_medio": 2.55,
+      "cov_espacial": 0.118,
+      "cov_modelo": 0.22,
+      "cov_resistencia_total": 0.25,
+      "cov_solicitacao": 0.1,
+      "beta_form": 3.42,
+      "probabilidade_ruptura_pf": 0.00030755311433883215,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "ACEITÁVEL P/ SISTEMA REDUNDANTE (3.1 ≤ β < 3.8 — recomenda-se PCE)"
+    },
+    {
+      "cenario": "600 PBGE atual — Ø50 em PC59 (61 tf), sem PCE",
+      "r_ult_medio_tf": 156.4,
+      "s_medio_tf": 57.9,
+      "fs_medio": 2.7,
+      "cov_espacial": 0.113,
+      "cov_modelo": 0.22,
+      "cov_resistencia_total": 0.247,
+      "cov_solicitacao": 0.1,
+      "beta_form": 3.68,
+      "probabilidade_ruptura_pf": 0.00011690874038478016,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "ACEITÁVEL P/ SISTEMA REDUNDANTE (3.1 ≤ β < 3.8 — recomenda-se PCE)"
+    },
+    {
+      "cenario": "600 PBGE atual — Ø50 em PC59 (61 tf), COM PCE (COV=0,12)",
+      "r_ult_medio_tf": 156.4,
+      "s_medio_tf": 57.9,
+      "fs_medio": 2.7,
+      "cov_espacial": 0.113,
+      "cov_modelo": 0.12,
+      "cov_resistencia_total": 0.165,
+      "cov_solicitacao": 0.1,
+      "beta_form": 5.14,
+      "probabilidade_ruptura_pf": 1.3728595077422412e-07,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "SEGURO (atende CC2/50a β ≥ 3.8)"
+    },
+    {
+      "cenario": "600 Alternativa — Ø70 p/ 85 tf, COM PCE (COV=0,12)",
+      "r_ult_medio_tf": 241.9,
+      "s_medio_tf": 80.8,
+      "fs_medio": 3.0,
+      "cov_espacial": 0.105,
+      "cov_modelo": 0.12,
+      "cov_resistencia_total": 0.16,
+      "cov_solicitacao": 0.1,
+      "beta_form": 5.81,
+      "probabilidade_ruptura_pf": 3.0346923862722974e-09,
+      "beta_alvo_redundante": 3.1,
+      "beta_alvo_cc2_50anos": 3.8,
+      "status_confiabilidade": "SEGURO (atende CC2/50a β ≥ 3.8)"
+    }
+  ],
+  "vibracao_cravacao": [
+    {
+      "estrutura_vizinha": "Filtro Velho (Mód. 1) — ao sul do ACTIFLO 360",
+      "distancia_m": 4.0,
+      "energia_martelo_kj": 45.0,
+      "classe_solo": "classe_II_argila_silte",
+      "ppv_estimado_mm_s": 36.7,
+      "limite_din4150_hidraulica_mm_s": 5.0,
+      "limite_nbr9653_baixa_freq_mm_s": 15.0,
+      "distancia_segura_din_5mms_m": 15.1,
+      "distancia_segura_nbr_15mms_m": 7.3,
+      "risco_fissuracao": "ALTO — Excede DIN 4150-3 e NBR 9653 (alto risco de fissuração em tanques existentes)",
+      "aprovado_sem_restricao": false
+    },
+    {
+      "estrutura_vizinha": "Floculador Existente — a leste do ACTIFLO 360",
+      "distancia_m": 6.0,
+      "energia_martelo_kj": 45.0,
+      "classe_solo": "classe_II_argila_silte",
+      "ppv_estimado_mm_s": 20.0,
+      "limite_din4150_hidraulica_mm_s": 5.0,
+      "limite_nbr9653_baixa_freq_mm_s": 15.0,
+      "distancia_segura_din_5mms_m": 15.1,
+      "distancia_segura_nbr_15mms_m": 7.3,
+      "risco_fissuracao": "ALTO — Excede DIN 4150-3 e NBR 9653 (alto risco de fissuração em tanques existentes)",
+      "aprovado_sem_restricao": false
+    },
+    {
+      "estrutura_vizinha": "EE Lodo Existente — a oeste do ACTIFLO 360",
+      "distancia_m": 12.0,
+      "energia_martelo_kj": 45.0,
+      "classe_solo": "classe_II_argila_silte",
+      "ppv_estimado_mm_s": 7.1,
+      "limite_din4150_hidraulica_mm_s": 5.0,
+      "limite_nbr9653_baixa_freq_mm_s": 15.0,
+      "distancia_segura_din_5mms_m": 15.1,
+      "distancia_segura_nbr_15mms_m": 7.3,
+      "risco_fissuracao": "MODERADO/ALTO — Excede DIN 4150-3 para estruturas hidráulicas estanques",
+      "aprovado_sem_restricao": false
+    },
+    {
+      "estrutura_vizinha": "Tanque de Lodo / Filtros Adjacentes — colados ao ACTIFLO 600",
+      "distancia_m": 3.5,
+      "energia_martelo_kj": 45.0,
+      "classe_solo": "classe_II_argila_silte",
+      "ppv_estimado_mm_s": 44.8,
+      "limite_din4150_hidraulica_mm_s": 5.0,
+      "limite_nbr9653_baixa_freq_mm_s": 15.0,
+      "distancia_segura_din_5mms_m": 15.1,
+      "distancia_segura_nbr_15mms_m": 7.3,
+      "risco_fissuracao": "ALTO — Excede DIN 4150-3 e NBR 9653 (alto risco de fissuração em tanques existentes)",
+      "aprovado_sem_restricao": false
+    },
+    {
+      "estrutura_vizinha": "Filtro Velho (nega em basalto — transmissão Classe IV)",
+      "distancia_m": 4.0,
+      "energia_martelo_kj": 45.0,
+      "classe_solo": "classe_IV_rocha",
+      "ppv_estimado_mm_s": 85.0,
+      "limite_din4150_hidraulica_mm_s": 5.0,
+      "limite_nbr9653_baixa_freq_mm_s": 15.0,
+      "distancia_segura_din_5mms_m": 26.4,
+      "distancia_segura_nbr_15mms_m": 12.7,
+      "risco_fissuracao": "ALTO — Excede DIN 4150-3 e NBR 9653 (alto risco de fissuração em tanques existentes)",
+      "aprovado_sem_restricao": false
+    }
+  ],
+  "capiteis_puncao_nbr6118": [
+    {
+      "cenario": "ACTIFLO 360 — 22 estacas Ø60 cm (~58 tf/est)",
+      "n_estacas_est": 22,
+      "diametro_cm": 60.0,
+      "carga_projeto_capitel_tf": 65.0,
+      "sem_capitel_passa_sem_armadura": false,
+      "sem_capitel_tau_c1_mpa": 0.8,
+      "sem_capitel_tau_rd1_mpa": 0.68,
+      "capitel_min_l_cm": 90.0,
+      "capitel_min_h_total_cm": 45.0,
+      "capitel_rebaixo_cm": 15.0,
+      "capitel_tau_c1_mpa": 0.35,
+      "capitel_tau_c2_laje_mpa": 0.59,
+      "dispensa_armadura_puncao": true
+    },
+    {
+      "cenario": "ACTIFLO 360 — 18 estacas Ø70 cm (~71 tf/est)",
+      "n_estacas_est": 18,
+      "diametro_cm": 70.0,
+      "carga_projeto_capitel_tf": 75.0,
+      "sem_capitel_passa_sem_armadura": false,
+      "sem_capitel_tau_c1_mpa": 0.86,
+      "sem_capitel_tau_rd1_mpa": 0.68,
+      "capitel_min_l_cm": 100.0,
+      "capitel_min_h_total_cm": 45.0,
+      "capitel_rebaixo_cm": 15.0,
+      "capitel_tau_c1_mpa": 0.39,
+      "capitel_tau_c2_laje_mpa": 0.64,
+      "dispensa_armadura_puncao": true
+    },
+    {
+      "cenario": "ACTIFLO 360 — 15 estacas Ø80 cm (~85 tf/est)",
+      "n_estacas_est": 15,
+      "diametro_cm": 80.0,
+      "carga_projeto_capitel_tf": 90.0,
+      "sem_capitel_passa_sem_armadura": false,
+      "sem_capitel_tau_c1_mpa": 0.98,
+      "sem_capitel_tau_rd1_mpa": 0.68,
+      "capitel_min_l_cm": 130.0,
+      "capitel_min_h_total_cm": 45.0,
+      "capitel_rebaixo_cm": 15.0,
+      "capitel_tau_c1_mpa": 0.45,
+      "capitel_tau_c2_laje_mpa": 0.66,
+      "dispensa_armadura_puncao": true
+    },
+    {
+      "cenario": "ACTIFLO 600 — 42 estacas Ø60 cm (~72 tf/est)",
+      "n_estacas_est": 42,
+      "diametro_cm": 60.0,
+      "carga_projeto_capitel_tf": 80.0,
+      "sem_capitel_passa_sem_armadura": false,
+      "sem_capitel_tau_c1_mpa": 0.98,
+      "sem_capitel_tau_rd1_mpa": 0.68,
+      "capitel_min_l_cm": 110.0,
+      "capitel_min_h_total_cm": 45.0,
+      "capitel_rebaixo_cm": 15.0,
+      "capitel_tau_c1_mpa": 0.44,
+      "capitel_tau_c2_laje_mpa": 0.65,
+      "dispensa_armadura_puncao": true
+    },
+    {
+      "cenario": "ACTIFLO 600 — 34 estacas Ø70 cm (~89 tf/est)",
+      "n_estacas_est": 34,
+      "diametro_cm": 70.0,
+      "carga_projeto_capitel_tf": 95.0,
+      "sem_capitel_passa_sem_armadura": false,
+      "sem_capitel_tau_c1_mpa": 1.09,
+      "sem_capitel_tau_rd1_mpa": 0.68,
+      "capitel_min_l_cm": 140.0,
+      "capitel_min_h_total_cm": 45.0,
+      "capitel_rebaixo_cm": 15.0,
+      "capitel_tau_c1_mpa": 0.49,
+      "capitel_tau_c2_laje_mpa": 0.66,
+      "dispensa_armadura_puncao": true
+    },
+    {
+      "cenario": "ACTIFLO 600 — 28 estacas Ø80 cm (~108 tf/est)",
+      "n_estacas_est": 28,
+      "diametro_cm": 80.0,
+      "carga_projeto_capitel_tf": 115.0,
+      "sem_capitel_passa_sem_armadura": false,
+      "sem_capitel_tau_c1_mpa": 1.25,
+      "sem_capitel_tau_rd1_mpa": 0.68,
+      "capitel_min_l_cm": 190.0,
+      "capitel_min_h_total_cm": 45.0,
+      "capitel_rebaixo_cm": 15.0,
+      "capitel_tau_c1_mpa": 0.57,
+      "capitel_tau_c2_laje_mpa": 0.65,
+      "dispensa_armadura_puncao": true
+    }
+  ],
+  "radier_estaqueado_pdr": [
+    {
+      "cenario": "ACTIFLO 360 — PBGE atual (39 est Ø40, L=11,5m)",
+      "n_estacas": 39,
+      "diametro_cm": 40.0,
+      "comprimento_m": 11.5,
+      "carga_total_tf": 1270.0,
+      "rigidez_radier_kr_kn_m": 76284.7,
+      "rigidez_grupo_kp_kn_m": 1305982.4,
+      "rigidez_radier_estaqueado_kpr_kn_m": 1317944.1,
+      "fator_interacao_alpha_rp": 0.608,
+      "parcela_carga_radier_pct": 2.3,
+      "parcela_carga_estacas_pct": 97.7,
+      "carga_media_por_estaca_tf": 31.8,
+      "tensao_contato_radier_kpa": 1.7,
+      "recalque_radier_isolado_mm": 163.3,
+      "recalque_radier_estaqueado_mm": 9.4,
+      "reducao_recalque_pct": 94.2,
+      "atende_recalque_els": true
+    },
+    {
+      "cenario": "ACTIFLO 360 — Otimizado Capitéis (18 est Ø70, L=11,5m)",
+      "n_estacas": 18,
+      "diametro_cm": 70.0,
+      "comprimento_m": 11.5,
+      "carga_total_tf": 1270.0,
+      "rigidez_radier_kr_kn_m": 76284.7,
+      "rigidez_grupo_kp_kn_m": 1061405.4,
+      "rigidez_radier_estaqueado_kpr_kn_m": 1074138.4,
+      "fator_interacao_alpha_rp": 0.597,
+      "parcela_carga_radier_pct": 2.9,
+      "parcela_carga_estacas_pct": 97.1,
+      "carga_media_por_estaca_tf": 68.5,
+      "tensao_contato_radier_kpa": 2.1,
+      "recalque_radier_isolado_mm": 163.3,
+      "recalque_radier_estaqueado_mm": 11.6,
+      "reducao_recalque_pct": 92.9,
+      "atende_recalque_els": true
+    },
+    {
+      "cenario": "ACTIFLO 360 — Otimizado Capitéis (15 est Ø80, L=11,5m)",
+      "n_estacas": 15,
+      "diametro_cm": 80.0,
+      "comprimento_m": 11.5,
+      "carga_total_tf": 1270.0,
+      "rigidez_radier_kr_kn_m": 76284.7,
+      "rigidez_grupo_kp_kn_m": 1006206.0,
+      "rigidez_radier_estaqueado_kpr_kn_m": 1019143.4,
+      "fator_interacao_alpha_rp": 0.594,
+      "parcela_carga_radier_pct": 3.1,
+      "parcela_carga_estacas_pct": 96.9,
+      "carga_media_por_estaca_tf": 82.0,
+      "tensao_contato_radier_kpa": 2.3,
+      "recalque_radier_isolado_mm": 163.3,
+      "recalque_radier_estaqueado_mm": 12.2,
+      "reducao_recalque_pct": 92.5,
+      "atende_recalque_els": true
+    },
+    {
+      "cenario": "ACTIFLO 600 — PBGE atual (87 est Ø40, L=13,5m)",
+      "n_estacas": 87,
+      "diametro_cm": 40.0,
+      "comprimento_m": 13.5,
+      "carga_total_tf": 3023.0,
+      "rigidez_radier_kr_kn_m": 103668.7,
+      "rigidez_grupo_kp_kn_m": 3246184.3,
+      "rigidez_radier_estaqueado_kpr_kn_m": 3261600.9,
+      "fator_interacao_alpha_rp": 0.617,
+      "parcela_carga_radier_pct": 1.2,
+      "parcela_carga_estacas_pct": 98.8,
+      "carga_media_por_estaca_tf": 34.3,
+      "tensao_contato_radier_kpa": 0.9,
+      "recalque_radier_isolado_mm": 286.0,
+      "recalque_radier_estaqueado_mm": 9.1,
+      "reducao_recalque_pct": 96.8,
+      "atende_recalque_els": true
+    },
+    {
+      "cenario": "ACTIFLO 600 — Otimizado Capitéis (42 est Ø60, L=13,5m)",
+      "n_estacas": 42,
+      "diametro_cm": 60.0,
+      "comprimento_m": 13.5,
+      "carga_total_tf": 3023.0,
+      "rigidez_radier_kr_kn_m": 103668.7,
+      "rigidez_grupo_kp_kn_m": 2722658.6,
+      "rigidez_radier_estaqueado_kpr_kn_m": 2740307.0,
+      "fator_interacao_alpha_rp": 0.59,
+      "parcela_carga_radier_pct": 1.6,
+      "parcela_carga_estacas_pct": 98.4,
+      "carga_media_por_estaca_tf": 70.8,
+      "tensao_contato_radier_kpa": 1.2,
+      "recalque_radier_isolado_mm": 286.0,
+      "recalque_radier_estaqueado_mm": 10.8,
+      "reducao_recalque_pct": 96.2,
+      "atende_recalque_els": true
+    },
+    {
+      "cenario": "ACTIFLO 600 — Otimizado Capitéis (34 est Ø70, L=13,5m)",
+      "n_estacas": 34,
+      "diametro_cm": 70.0,
+      "comprimento_m": 13.5,
+      "carga_total_tf": 3023.0,
+      "rigidez_radier_kr_kn_m": 103668.7,
+      "rigidez_grupo_kp_kn_m": 2600059.6,
+      "rigidez_radier_estaqueado_kpr_kn_m": 2618023.3,
+      "fator_interacao_alpha_rp": 0.587,
+      "parcela_carga_radier_pct": 1.7,
+      "parcela_carga_estacas_pct": 98.3,
+      "carga_media_por_estaca_tf": 87.4,
+      "tensao_contato_radier_kpa": 1.2,
+      "recalque_radier_isolado_mm": 286.0,
+      "recalque_radier_estaqueado_mm": 11.3,
+      "reducao_recalque_pct": 96.0,
+      "atende_recalque_els": true
+    },
+    {
+      "cenario": "ACTIFLO 600 — Otimizado Capitéis (28 est Ø80, L=13,5m)",
+      "n_estacas": 28,
+      "diametro_cm": 80.0,
+      "comprimento_m": 13.5,
+      "carga_total_tf": 3023.0,
+      "rigidez_radier_kr_kn_m": 103668.7,
+      "rigidez_grupo_kp_kn_m": 2474948.4,
+      "rigidez_radier_estaqueado_kpr_kn_m": 2493330.0,
+      "fator_interacao_alpha_rp": 0.582,
+      "parcela_carga_radier_pct": 1.8,
+      "parcela_carga_estacas_pct": 98.2,
+      "carga_media_por_estaca_tf": 106.1,
+      "tensao_contato_radier_kpa": 1.3,
+      "recalque_radier_isolado_mm": 286.0,
+      "recalque_radier_estaqueado_mm": 11.9,
+      "reducao_recalque_pct": 95.8,
+      "atende_recalque_els": true
+    }
+  ],
+  "grupos_estacas": {
+    "actiflo_360": {
+      "n_linhas": 4,
+      "n_colunas": 10,
+      "n_estacas": 40,
+      "espacamento_sobre_d": 5.0,
+      "eficiencia_converse_labarre": 0.793,
+      "recalque_elastico_fuste_mm": 0.62,
+      "recalque_solo_abaixo_2_3_l_mm": 10.03,
+      "recalque_total_grupo_mm": 10.65
+    },
+    "actiflo_600": {
+      "n_linhas": 8,
+      "n_colunas": 11,
+      "n_estacas": 88,
+      "espacamento_sobre_d": 5.25,
+      "eficiencia_converse_labarre": 0.786,
+      "recalque_elastico_fuste_mm": 0.78,
+      "recalque_solo_abaixo_2_3_l_mm": 7.22,
+      "recalque_total_grupo_mm": 8.01
+    }
+  },
+  "tanques": {
+    "actiflo_360": {
+      "nome": "ACTIFLO 360",
+      "peso_concreto_armado_tf": 505.5,
+      "peso_lastro_enchimento_tf": 30.5,
+      "peso_vazio_total_tf": 536.0,
+      "volume_liquido_m3": 543.2,
+      "peso_agua_tf": 543.2,
+      "peso_microareia_lodo_tf": 4.3,
+      "acrescimo_dinamico_agitadores_tf": 16.3,
+      "carga_estatica_cheio_sem_equip_tf": 1079.2,
+      "carga_operando_com_dinamico_tf": 1099.8,
+      "carga_total_pbes_tf": 1270.0,
+      "parcela_equip_passarelas_folga_tf": 186.5,
+      "tensao_media_vazio_kpa": 36.3,
+      "tensao_media_pbes_kpa": 85.9,
+      "pct_dinamico_sobre_pbes": 1.28
+    },
+    "actiflo_600": {
+      "nome": "ACTIFLO 600",
+      "peso_concreto_armado_tf": 1195.2,
+      "peso_lastro_enchimento_tf": 98.3,
+      "peso_vazio_total_tf": 1293.6,
+      "volume_liquido_m3": 1430.8,
+      "peso_agua_tf": 1430.8,
+      "peso_microareia_lodo_tf": 11.4,
+      "acrescimo_dinamico_agitadores_tf": 42.9,
+      "carga_estatica_cheio_sem_equip_tf": 2724.3,
+      "carga_operando_com_dinamico_tf": 2778.7,
+      "carga_total_pbes_tf": 3023.0,
+      "parcela_equip_passarelas_folga_tf": 287.2,
+      "tensao_media_vazio_kpa": 34.8,
+      "tensao_media_pbes_kpa": 81.2,
+      "pct_dinamico_sobre_pbes": 1.42
+    }
+  },
+  "fundacao_direta_ai02": {
+    "vesic_360": {
+      "amostra": "AI-02",
+      "b_m": 8.4,
+      "l_m": 20.4,
+      "df_m": 1.5,
+      "q_ult_kpa": 417.6,
+      "q_adm_kpa": 139.2,
+      "fs": 3.0
+    },
+    "vesic_600": {
+      "amostra": "AI-02",
+      "b_m": 16.9,
+      "l_m": 23.7,
+      "df_m": 1.5,
+      "q_ult_kpa": 535.9,
+      "q_adm_kpa": 178.6,
+      "fs": 3.0
+    },
+    "troca_360": [
+      {
+        "espessura_troca_m": 0.0,
+        "espessura_mole_remanescente_m": 3.3,
+        "recalque_adensamento_liq_cm": 13.11,
+        "recalque_adensamento_bruto_cm": 18.35,
+        "recalque_silte_subjacente_cm": 0.94,
+        "recalque_total_liq_cm": 14.05,
+        "recalque_total_bruto_cm": 19.29,
+        "atende_limite_els": false
+      },
+      {
+        "espessura_troca_m": 1.5,
+        "espessura_mole_remanescente_m": 1.8,
+        "recalque_adensamento_liq_cm": 8.93,
+        "recalque_adensamento_bruto_cm": 11.61,
+        "recalque_silte_subjacente_cm": 0.94,
+        "recalque_total_liq_cm": 9.87,
+        "recalque_total_bruto_cm": 12.55,
+        "atende_limite_els": false
+      },
+      {
+        "espessura_troca_m": 2.5,
+        "espessura_mole_remanescente_m": 0.8,
+        "recalque_adensamento_liq_cm": 4.25,
+        "recalque_adensamento_bruto_cm": 5.41,
+        "recalque_silte_subjacente_cm": 0.94,
+        "recalque_total_liq_cm": 5.19,
+        "recalque_total_bruto_cm": 6.35,
+        "atende_limite_els": false
+      },
+      {
+        "espessura_troca_m": 3.3,
+        "espessura_mole_remanescente_m": 0.0,
+        "recalque_adensamento_liq_cm": 0.0,
+        "recalque_adensamento_bruto_cm": 0.0,
+        "recalque_silte_subjacente_cm": 0.94,
+        "recalque_total_liq_cm": 0.94,
+        "recalque_total_bruto_cm": 0.94,
+        "atende_limite_els": true
+      }
+    ],
+    "troca_600": [
+      {
+        "espessura_troca_m": 0.0,
+        "espessura_mole_remanescente_m": 6.3,
+        "recalque_adensamento_liq_cm": 21.61,
+        "recalque_adensamento_bruto_cm": 30.19,
+        "recalque_silte_subjacente_cm": 0.59,
+        "recalque_total_liq_cm": 22.2,
+        "recalque_total_bruto_cm": 30.78,
+        "atende_limite_els": false
+      },
+      {
+        "espessura_troca_m": 1.5,
+        "espessura_mole_remanescente_m": 4.8,
+        "recalque_adensamento_liq_cm": 18.14,
+        "recalque_adensamento_bruto_cm": 24.15,
+        "recalque_silte_subjacente_cm": 0.59,
+        "recalque_total_liq_cm": 18.73,
+        "recalque_total_bruto_cm": 24.74,
+        "atende_limite_els": false
+      },
+      {
+        "espessura_troca_m": 2.5,
+        "espessura_mole_remanescente_m": 3.8,
+        "recalque_adensamento_liq_cm": 14.21,
+        "recalque_adensamento_bruto_cm": 18.78,
+        "recalque_silte_subjacente_cm": 0.59,
+        "recalque_total_liq_cm": 14.8,
+        "recalque_total_bruto_cm": 19.37,
+        "atende_limite_els": false
+      },
+      {
+        "espessura_troca_m": 3.3,
+        "espessura_mole_remanescente_m": 3.0,
+        "recalque_adensamento_liq_cm": 10.78,
+        "recalque_adensamento_bruto_cm": 14.29,
+        "recalque_silte_subjacente_cm": 0.59,
+        "recalque_total_liq_cm": 11.37,
+        "recalque_total_bruto_cm": 14.88,
+        "atende_limite_els": false
+      }
+    ]
+  }
+}
