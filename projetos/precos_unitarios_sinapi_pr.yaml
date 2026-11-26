@@ -1,0 +1,42 @@
+# ==============================================================================
+# BASE PARAMÉTRICA DE CUSTOS UNITÁRIOS DIRETOS (REFERÊNCIA SINAPI/PR + MERCADO PR)
+# Sem BDI — Valores referenciais em R$ para comparação relativa entre soluções.
+# SUBSTITUIR pelos preços unitários exatos da planilha contratual SANEPAR para
+# orçamento executivo e formalização de pleito/aditivo de escopo.
+# ==============================================================================
+moeda: "BRL"
+referencia: "SINAPI/PR + Mercado Fundações PR (referencial paramétrico sem BDI)"
+
+# Fator de sobreconsumo de concreto em Hélice Contínua (argila mole superficial NSPT 4-6)
+sobreconsumo_concreto_helice: 1.20
+
+# Perfuração Hélice Contínua Monitorada (serviço de perfuração + bombeamento, sem concreto/aço) [R$/m]
+perfuracao_helice_rs_m:
+  40: 95.0
+  50: 120.0
+  60: 155.0
+  70: 195.0
+  80: 245.0
+
+# Mobilização / desmobilização de perfuratriz [R$/equipamento]
+mobilizacao_perfuratriz_rs:
+  leve_40_50: 28000.0      # Perfuratriz até Ø50 cm
+  pesada_60_80: 45000.0    # Perfuratriz alto torque Ø60–80 cm
+
+# Materiais e serviços estruturais
+concreto_estaca_c30_rs_m3: 540.0       # Concreto bombeável C30 slump 220±30 (PBGE)
+concreto_estaca_c40_rs_m3: 630.0       # Concreto bombeável C40 a/c<=0,45 (CAA IV PBES)
+concreto_bloco_c40_rs_m3: 680.0        # Concreto C40 com aditivo cristalizante (blocos/capitéis)
+aco_ca50_forn_mont_rs_kg: 12.50        # Aço CA-50 fornecido, cortado, dobrado e montado
+forma_bloco_rs_m2: 115.0               # Fôrma de madeira em blocos/capitéis
+escavacao_bloco_rs_m3: 85.0            # Escavação manual/mecânica de cavas de blocos + lastro
+
+# Ensaios de controle e validação
+prova_carga_estatica_rs_un: 38000.0    # Prova de carga estática (PCE) até ~120–180 tf
+ensaio_pit_rs_un: 350.0                # Ensaio de integridade (PIT)
+
+# Serviços para alternativa de Troca de Solo / Melhoramento (ACTIFLO 360)
+escavacao_mecanica_solo_rs_m3: 28.0    # Escavação mecânica em solo mole
+bota_fora_transporte_rs_m3: 45.0       # Carga, transporte e destinação
+solo_cimento_compactado_rs_m3: 235.0   # Solo-cimento 7% cimento misturado e compactado em camadas
+drenagem_base_brita_rs_m2: 65.0        # Colchão drenante de brita + geotêxtil sob radier
