@@ -300,6 +300,15 @@ def build_parser() -> argparse.ArgumentParser:
     p_ex.add_argument("--out-json", default="saidas/estudo_exaustivo_resultados.json", help="Resultados estruturados em JSON.")
     p_ex.set_defaults(func=_cmd_exaustivo)
 
+    p_custo = sub.add_parser(
+        "comparar-custos",
+        help="Comparativo técnico-econômico determinístico entre PBGE original e soluções alternativas.",
+    )
+    p_custo.add_argument("--precos", default="projetos/precos_unitarios_sinapi_pr.yaml", help="YAML de preços unitários.")
+    p_custo.add_argument("--out-md", default="saidas/comparativo_economico_actiflo_360_600.md", help="Relatório Markdown de saída.")
+    p_custo.add_argument("--out-json", default="saidas/comparativo_economico_resultados.json", help="JSON estruturado de saída.")
+    p_custo.set_defaults(func=_cmd_comparar_custos)
+
     return parser
 
 
@@ -308,6 +317,26 @@ def _cmd_exaustivo(args: argparse.Namespace) -> int:
 
     executar_estudo_exaustivo(raiz_repo=".", out_md=args.out_md, out_json=args.out_json)
     print(f"Estudo exaustivo gerado em:\n  - {args.out_md}\n  - {args.out_json}")
+    return 0
+
+
+def _cmd_comparar_custos(args: argparse.Namespace) -> int:
+    import json
+    from fundacao.orcamento.comparativo_solucoes import (
+        comparar_solucoes_actiflo,
+        gerar_relatorio_comparativo_markdown,
+    )
+
+    dados = comparar_solucoes_actiflo(raiz_repo=".", caminho_precos=args.precos)
+    md = gerar_relatorio_comparativo_markdown(dados)
+    p_md = Path(args.out_md)
+    p_md.parent.mkdir(parents=True, exist_ok=True)
+    p_md.write_text(md, encoding="utf-8")
+
+    p_json = Path(args.out_json)
+    p_json.parent.mkdir(parents=True, exist_ok=True)
+    p_json.write_text(json.dumps(dados, indent=2, ensure_ascii=False), encoding="utf-8")
+    print(f"Comparativo econômico gerado em:\n  - {args.out_md}\n  - {args.out_json}")
     return 0
 
 
